@@ -1,0 +1,317 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		67DA193E1C8DE6C500BB9382 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA193D1C8DE6C500BB9382 /* main.m */; };
+		67DA19411C8DE6C500BB9382 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19401C8DE6C500BB9382 /* AppDelegate.m */; };
+		67DA19441C8DE6C500BB9382 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19431C8DE6C500BB9382 /* GameScene.m */; };
+		67DA19461C8DE6C500BB9382 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 67DA19451C8DE6C500BB9382 /* GameScene.sks */; };
+		67DA19491C8DE6C500BB9382 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19481C8DE6C500BB9382 /* GameViewController.m */; };
+		67DA194C1C8DE6C500BB9382 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67DA194A1C8DE6C500BB9382 /* Main.storyboard */; };
+		67DA194E1C8DE6C500BB9382 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67DA194D1C8DE6C500BB9382 /* Assets.xcassets */; };
+		67DA19511C8DE6C500BB9382 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67DA194F1C8DE6C500BB9382 /* LaunchScreen.storyboard */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		67DA19391C8DE6C400BB9382 /* DynamicWater.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DynamicWater.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		67DA193D1C8DE6C500BB9382 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		67DA193F1C8DE6C500BB9382 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		67DA19401C8DE6C500BB9382 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		67DA19421C8DE6C500BB9382 /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		67DA19431C8DE6C500BB9382 /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		67DA19451C8DE6C500BB9382 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		67DA19471C8DE6C500BB9382 /* GameViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		67DA19481C8DE6C500BB9382 /* GameViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		67DA194B1C8DE6C500BB9382 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		67DA194D1C8DE6C500BB9382 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		67DA19501C8DE6C500BB9382 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		67DA19521C8DE6C500BB9382 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		67DA19361C8DE6C400BB9382 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		67DA19301C8DE6C400BB9382 = {
+			isa = PBXGroup;
+			children = (
+				67DA193B1C8DE6C500BB9382 /* DynamicWater */,
+				67DA193A1C8DE6C400BB9382 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		67DA193A1C8DE6C400BB9382 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				67DA19391C8DE6C400BB9382 /* DynamicWater.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		67DA193B1C8DE6C500BB9382 /* DynamicWater */ = {
+			isa = PBXGroup;
+			children = (
+				67DA193F1C8DE6C500BB9382 /* AppDelegate.h */,
+				67DA19401C8DE6C500BB9382 /* AppDelegate.m */,
+				67DA19421C8DE6C500BB9382 /* GameScene.h */,
+				67DA19431C8DE6C500BB9382 /* GameScene.m */,
+				67DA19451C8DE6C500BB9382 /* GameScene.sks */,
+				67DA19471C8DE6C500BB9382 /* GameViewController.h */,
+				67DA19481C8DE6C500BB9382 /* GameViewController.m */,
+				67DA194A1C8DE6C500BB9382 /* Main.storyboard */,
+				67DA194D1C8DE6C500BB9382 /* Assets.xcassets */,
+				67DA194F1C8DE6C500BB9382 /* LaunchScreen.storyboard */,
+				67DA19521C8DE6C500BB9382 /* Info.plist */,
+				67DA193C1C8DE6C500BB9382 /* Supporting Files */,
+			);
+			path = DynamicWater;
+			sourceTree = "<group>";
+		};
+		67DA193C1C8DE6C500BB9382 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				67DA193D1C8DE6C500BB9382 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		67DA19381C8DE6C400BB9382 /* DynamicWater */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 67DA19551C8DE6C500BB9382 /* Build configuration list for PBXNativeTarget "DynamicWater" */;
+			buildPhases = (
+				67DA19351C8DE6C400BB9382 /* Sources */,
+				67DA19361C8DE6C400BB9382 /* Frameworks */,
+				67DA19371C8DE6C400BB9382 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DynamicWater;
+			productName = DynamicWater;
+			productReference = 67DA19391C8DE6C400BB9382 /* DynamicWater.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		67DA19311C8DE6C400BB9382 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "Steve Barnegren";
+				TargetAttributes = {
+					67DA19381C8DE6C400BB9382 = {
+						CreatedOnToolsVersion = 7.2;
+					};
+				};
+			};
+			buildConfigurationList = 67DA19341C8DE6C400BB9382 /* Build configuration list for PBXProject "DynamicWater" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 67DA19301C8DE6C400BB9382;
+			productRefGroup = 67DA193A1C8DE6C400BB9382 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				67DA19381C8DE6C400BB9382 /* DynamicWater */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		67DA19371C8DE6C400BB9382 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67DA19461C8DE6C500BB9382 /* GameScene.sks in Resources */,
+				67DA19511C8DE6C500BB9382 /* LaunchScreen.storyboard in Resources */,
+				67DA194E1C8DE6C500BB9382 /* Assets.xcassets in Resources */,
+				67DA194C1C8DE6C500BB9382 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		67DA19351C8DE6C400BB9382 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				67DA19491C8DE6C500BB9382 /* GameViewController.m in Sources */,
+				67DA19411C8DE6C500BB9382 /* AppDelegate.m in Sources */,
+				67DA19441C8DE6C500BB9382 /* GameScene.m in Sources */,
+				67DA193E1C8DE6C500BB9382 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		67DA194A1C8DE6C500BB9382 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67DA194B1C8DE6C500BB9382 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		67DA194F1C8DE6C500BB9382 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				67DA19501C8DE6C500BB9382 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		67DA19531C8DE6C500BB9382 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		67DA19541C8DE6C500BB9382 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		67DA19561C8DE6C500BB9382 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DynamicWater/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SteveBarnegren.DynamicWater;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		67DA19571C8DE6C500BB9382 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DynamicWater/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = SteveBarnegren.DynamicWater;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		67DA19341C8DE6C400BB9382 /* Build configuration list for PBXProject "DynamicWater" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67DA19531C8DE6C500BB9382 /* Debug */,
+				67DA19541C8DE6C500BB9382 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		67DA19551C8DE6C500BB9382 /* Build configuration list for PBXNativeTarget "DynamicWater" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				67DA19561C8DE6C500BB9382 /* Debug */,
+				67DA19571C8DE6C500BB9382 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 67DA19311C8DE6C400BB9382 /* Project object */;
+}
