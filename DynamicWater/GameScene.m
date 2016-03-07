@@ -7,43 +7,71 @@
 //
 
 #import "GameScene.h"
+#import "DynamicWaterNode.h"
+
+#define kFixedTimeStep (1.0f/60)
+
+@interface GameScene ()
+@property (nonatomic, strong) DynamicWaterNode *waterNode;
+
+@property CFTimeInterval lastFrameTime;
+@property BOOL hasReferenceFrameTime;
+
+@end
 
 @implementation GameScene
 
 -(void)didMoveToView:(SKView *)view {
-    /* Setup your scene here */
-    SKLabelNode *myLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
+
+    self.waterNode = [[DynamicWaterNode alloc]initWithWidth:self.size.width numJoints:100 surfaceHeight:200];
+    self.waterNode.position = CGPointMake(self.size.width/2, 0);
+    [self addChild:self.waterNode];
     
-    myLabel.text = @"Hello, World!";
-    myLabel.fontSize = 45;
-    myLabel.position = CGPointMake(CGRectGetMidX(self.frame),
-                                   CGRectGetMidY(self.frame));
-    
-    [self addChild:myLabel];
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
-        
-        SKSpriteNode *sprite = [SKSpriteNode spriteNodeWithImageNamed:@"Spaceship"];
-        
-        sprite.xScale = 0.5;
-        sprite.yScale = 0.5;
-        sprite.position = location;
-        
-        SKAction *action = [SKAction rotateByAngle:M_PI duration:1];
-        
-        [sprite runAction:[SKAction repeatActionForever:action]];
-        
-        [self addChild:sprite];
-    }
-}
+  }
+
+
+#pragma mark - Update
 
 -(void)update:(CFTimeInterval)currentTime {
     /* Called before each frame is rendered */
+    
+    if (!self.hasReferenceFrameTime) {
+        self.lastFrameTime = currentTime;
+        self.hasReferenceFrameTime = YES;
+        return;
+    }
+    
+    CFTimeInterval dt = currentTime - self.lastFrameTime;
+    
+    // Fixed Update
+    CFTimeInterval accumilator = 0;
+    accumilator += dt;
+    
+    while (accumilator >= kFixedTimeStep) {
+        [self fixedUpdate:kFixedTimeStep];
+        accumilator -= kFixedTimeStep;
+    }
+    [self fixedUpdate:accumilator];
+    
+    // Late Update
+    [self lateUpdate:dt];
+    
+    self.lastFrameTime = currentTime;
+    
+}
+
+-(void)fixedUpdate:(CFTimeInterval)dt{
+    //[self.waterNode update:dt];
+
+}
+
+-(void)lateUpdate:(CFTimeInterval)dt{
+    [self.waterNode update:dt];
+
+    
 }
 
 @end
