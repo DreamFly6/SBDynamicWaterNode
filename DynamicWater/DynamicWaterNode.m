@@ -38,12 +38,11 @@
 }
 
 - (void)update:(NSTimeInterval)dt {
-    NSTimeInterval invDt = 1.0-dt;
     
     CGFloat y = self.position.y;
-    CGFloat acceleration = (-self.tension * y) - (self.speed * (self.damping));
+    CGFloat acceleration = (-self.tension * y) - (self.speed * self.damping);
 
-    self.position = CGPointMake(self.position.x, self.position.y + (self.speed));
+    self.position = CGPointMake(self.position.x, self.position.y + (self.speed * 60 * dt));
     self.speed += acceleration * dt;
 }
 
@@ -168,14 +167,11 @@
             }
             
         }
-        
-        
+
     }
     
-    
-    
-    // Render
     [self render];
+    
 }
 
 -(void)render{

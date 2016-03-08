@@ -15,4 +15,6 @@
 
 -(void)update:(CFTimeInterval)dt;
 
+-(void)render;
+
 @end

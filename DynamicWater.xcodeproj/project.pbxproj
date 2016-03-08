@@ -16,6 +16,9 @@
 		67DA194E1C8DE6C500BB9382 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67DA194D1C8DE6C500BB9382 /* Assets.xcassets */; };
 		67DA19511C8DE6C500BB9382 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67DA194F1C8DE6C500BB9382 /* LaunchScreen.storyboard */; };
 		67DA195A1C8DE6F400BB9382 /* DynamicWaterNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19591C8DE6F400BB9382 /* DynamicWaterNode.m */; };
+		67DA195E1C8E542300BB9382 /* metaparticle.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DA195B1C8E542300BB9382 /* metaparticle.png */; };
+		67DA195F1C8E542300BB9382 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DA195C1C8E542300BB9382 /* rock.png */; };
+		67DA19601C8E542300BB9382 /* sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DA195D1C8E542300BB9382 /* sky.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		67DA19521C8DE6C500BB9382 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		67DA19581C8DE6F400BB9382 /* DynamicWaterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicWaterNode.h; sourceTree = "<group>"; };
 		67DA19591C8DE6F400BB9382 /* DynamicWaterNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicWaterNode.m; sourceTree = "<group>"; };
+		67DA195B1C8E542300BB9382 /* metaparticle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metaparticle.png; sourceTree = "<group>"; };
+		67DA195C1C8E542300BB9382 /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
+		67DA195D1C8E542300BB9382 /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +72,9 @@
 		67DA193B1C8DE6C500BB9382 /* DynamicWater */ = {
 			isa = PBXGroup;
 			children = (
+				67DA195B1C8E542300BB9382 /* metaparticle.png */,
+				67DA195C1C8E542300BB9382 /* rock.png */,
+				67DA195D1C8E542300BB9382 /* sky.png */,
 				67DA193F1C8DE6C500BB9382 /* AppDelegate.h */,
 				67DA19401C8DE6C500BB9382 /* AppDelegate.m */,
 				67DA19421C8DE6C500BB9382 /* GameScene.h */,
@@ -151,7 +160,10 @@
 			files = (
 				67DA19461C8DE6C500BB9382 /* GameScene.sks in Resources */,
 				67DA19511C8DE6C500BB9382 /* LaunchScreen.storyboard in Resources */,
+				67DA195F1C8E542300BB9382 /* rock.png in Resources */,
+				67DA195E1C8E542300BB9382 /* metaparticle.png in Resources */,
 				67DA194E1C8DE6C500BB9382 /* Assets.xcassets in Resources */,
+				67DA19601C8E542300BB9382 /* sky.png in Resources */,
 				67DA194C1C8DE6C500BB9382 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
