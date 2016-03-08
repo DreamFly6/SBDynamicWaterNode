@@ -19,6 +19,7 @@
 		67DA195E1C8E542300BB9382 /* metaparticle.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DA195B1C8E542300BB9382 /* metaparticle.png */; };
 		67DA195F1C8E542300BB9382 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DA195C1C8E542300BB9382 /* rock.png */; };
 		67DA19601C8E542300BB9382 /* sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DA195D1C8E542300BB9382 /* sky.png */; };
+		67DA19B31C8F39A400BB9382 /* Rock.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19B21C8F39A400BB9382 /* Rock.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,8 @@
 		67DA195B1C8E542300BB9382 /* metaparticle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metaparticle.png; sourceTree = "<group>"; };
 		67DA195C1C8E542300BB9382 /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
 		67DA195D1C8E542300BB9382 /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky.png; sourceTree = "<group>"; };
+		67DA19B11C8F39A400BB9382 /* Rock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rock.h; sourceTree = "<group>"; };
+		67DA19B21C8F39A400BB9382 /* Rock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rock.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,8 @@
 				67DA19401C8DE6C500BB9382 /* AppDelegate.m */,
 				67DA19421C8DE6C500BB9382 /* GameScene.h */,
 				67DA19431C8DE6C500BB9382 /* GameScene.m */,
+				67DA19B11C8F39A400BB9382 /* Rock.h */,
+				67DA19B21C8F39A400BB9382 /* Rock.m */,
 				67DA19581C8DE6F400BB9382 /* DynamicWaterNode.h */,
 				67DA19591C8DE6F400BB9382 /* DynamicWaterNode.m */,
 				67DA19451C8DE6C500BB9382 /* GameScene.sks */,
@@ -177,6 +182,7 @@
 			files = (
 				67DA19491C8DE6C500BB9382 /* GameViewController.m in Sources */,
 				67DA19411C8DE6C500BB9382 /* AppDelegate.m in Sources */,
+				67DA19B31C8F39A400BB9382 /* Rock.m in Sources */,
 				67DA19441C8DE6C500BB9382 /* GameScene.m in Sources */,
 				67DA195A1C8DE6F400BB9382 /* DynamicWaterNode.m in Sources */,
 				67DA193E1C8DE6C500BB9382 /* main.m in Sources */,

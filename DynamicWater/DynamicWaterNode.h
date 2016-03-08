@@ -10,11 +10,17 @@
 
 @interface DynamicWaterNode : SKNode
 
--(instancetype)initWithWidth:(float)width numJoints:(NSInteger)numJoints surfaceHeight:(float)surfaceHeight;
+@property float surfaceHeight;
+
+
+-(instancetype)initWithWidth:(float)width numJoints:(NSInteger)numJoints surfaceHeight:(float)surfaceHeight fillColour:(UIColor*)fillColour;
 
 
 -(void)update:(CFTimeInterval)dt;
 
 -(void)render;
+
+-(void)splashAtX:(float)xLocation force:(CGFloat)force;
+-(void)splashAtX:(float)xLocation force:(CGFloat)force width:(float)width;
 
 @end

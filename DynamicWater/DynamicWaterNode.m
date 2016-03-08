@@ -55,7 +55,6 @@
 @interface DynamicWaterNode ()
 @property (nonatomic, strong) NSArray<WaterJoint*> *joints;
 @property (nonatomic, strong) SKShapeNode *shapeNode;
-@property float surfaceHeight;
 @property float width;
 @property float spread;
 
@@ -68,7 +67,7 @@
 
 #pragma mark - Setup
 
--(instancetype)initWithWidth:(float)width numJoints:(NSInteger)numJoints surfaceHeight:(float)surfaceHeight{
+-(instancetype)initWithWidth:(float)width numJoints:(NSInteger)numJoints surfaceHeight:(float)surfaceHeight fillColour:(UIColor*)fillColour{
     
     self = [super init];
     if (!self) { return nil; }
@@ -79,7 +78,7 @@
     
     // Shape Node
     self.shapeNode = [[SKShapeNode alloc]init];
-    self.shapeNode.fillColor = [UIColor blueColor];
+    self.shapeNode.fillColor = fillColour;
     [self addChild:self.shapeNode];
     
     // Create joints
@@ -87,7 +86,7 @@
     for (NSInteger i = 0; i < numJoints; i++) {
         WaterJoint *joint = [[WaterJoint alloc]init];
         CGPoint position;
-        position.x = -(width/2) + ((width/numJoints) * i);
+        position.x = -(width/2) + ((width/(numJoints-1)) * i);
         position.y = 0;
         joint.position = position;
         [mutableJoints addObject:joint];
@@ -95,32 +94,41 @@
     self.joints = [NSArray arrayWithArray:mutableJoints];
     
     
-    [self performSelector:@selector(doSplash) withObject:nil afterDelay:5];
    
     return self;
 }
 
--(void)doSplash{
-    NSLog(@"SPLASH!");
-    [self splash:CGPointMake(100, 100) speed:0];
+#pragma mark - Splash
+
+-(void)splashAtX:(float)xLocation force:(CGFloat)force{
+    [self splashAtX:xLocation force:force width:0];
 }
 
-- (void)splash:(CGPoint)location speed:(CGFloat)speed {
+-(void)splashAtX:(float)xLocation force:(CGFloat)force width:(float)width{
+
+    xLocation -= self.width/2;
     
-    NSInteger closestJointIndex = 0;
     CGFloat shortestDistance = CGFLOAT_MAX;
     WaterJoint *closestJoint;
     
     for (WaterJoint *joint in self.joints) {
     
-        CGFloat distance = fabs(joint.position.x - location.x);
+        CGFloat distance = fabs(joint.position.x - xLocation);
         if (distance < shortestDistance) {
             shortestDistance = distance;
             closestJoint = joint;
         }
     }
     
-    closestJoint.speed = -100;
+    closestJoint.speed = -force;
+    
+    for (WaterJoint *joint in self.joints) {
+        CGFloat distance = fabs(joint.position.x - closestJoint.position.x);
+        if (distance < width) {
+            joint.speed = distance / width * -force;
+        }
+    }
+    
 }
 
 
@@ -169,10 +177,10 @@
         }
 
     }
-    
-    [self render];
-    
+        
 }
+
+#pragma mark - Render
 
 -(void)render{
     
