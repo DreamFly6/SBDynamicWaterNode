@@ -25,7 +25,6 @@ typedef enum : NSUInteger {
 @property CFTimeInterval lastFrameTime;
 @property BOOL hasReferenceFrameTime;
 
-@property (nonatomic, strong) Rock *rock;
 @property (nonatomic, strong) NSMutableArray *rocks;
 
 @end
@@ -48,8 +47,10 @@ typedef enum : NSUInteger {
     self.waterNode = [[DynamicWaterNode alloc]initWithWidth:self.size.width numJoints:100 surfaceHeight:200 fillColour:[UIColor blueColor]];
     self.waterNode.position = CGPointMake(self.size.width/2, 0);
     self.waterNode.zPosition = ZPositionWater;
-    self.waterNode.alpha = 0.7;
+    //self.waterNode.alpha = 0.7;
     [self addChild:self.waterNode];
+    
+   
     
 }
 
@@ -57,39 +58,17 @@ typedef enum : NSUInteger {
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    if (self.rock) { return; }
     
-    CGPoint location = [[touches anyObject] locationInNode:self];
-    self.rock = [[Rock alloc]initWithImageNamed:@"rock"];
-    self.rock.position = location;
-    self.rock.zPosition = ZPositionRock;
-    [self addChild:self.rock];
-    
-}
-
--(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    if (self.rock) {
-        [self.rock removeFromParent];
-        self.rock = nil;
+    for (UITouch *touch in touches) {
+        
+        CGPoint location = [touch locationInNode:self];
+        Rock *rock = [[Rock alloc]initWithImageNamed:@"rock"];
+        rock.position = location;
+        rock.zPosition = ZPositionRock;
+        [self addChild:rock];
+        [self.rocks addObject:rock];
     }
-}
-
--(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     
-    if (!self.rock) { return; }
-    
-    CGPoint location = [[touches anyObject] locationInNode:self];
-    self.rock.position = location;
-}
-
--(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
-    if (!self.rock) { return; }
-    
-    CGPoint location = [[touches anyObject] locationInNode:self];
-    self.rock.position = location;
-    [self.rocks addObject:self.rock];
-    self.rock = nil;
 }
 
 #pragma mark - Update

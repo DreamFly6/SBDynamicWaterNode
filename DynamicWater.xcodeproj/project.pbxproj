@@ -20,6 +20,11 @@
 		67DA195F1C8E542300BB9382 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DA195C1C8E542300BB9382 /* rock.png */; };
 		67DA19601C8E542300BB9382 /* sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DA195D1C8E542300BB9382 /* sky.png */; };
 		67DA19B31C8F39A400BB9382 /* Rock.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19B21C8F39A400BB9382 /* Rock.m */; };
+		67DA19B61C8F7E2D00BB9382 /* SettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19B51C8F7E2D00BB9382 /* SettingsView.m */; };
+		67DA19B81C8F7E4500BB9382 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67DA19B71C8F7E4500BB9382 /* SettingsView.xib */; };
+		67DA19BA1C8F8B7900BB9382 /* Droplets.fsh in Resources */ = {isa = PBXBuildFile; fileRef = 67DA19B91C8F8B7900BB9382 /* Droplets.fsh */; };
+		67DA19BD1C8FA22900BB9382 /* MyEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 67DA19BB1C8FA22900BB9382 /* MyEmitter.sks */; };
+		67DA19BE1C8FA22900BB9382 /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DA19BC1C8FA22900BB9382 /* spark.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +48,12 @@
 		67DA195D1C8E542300BB9382 /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky.png; sourceTree = "<group>"; };
 		67DA19B11C8F39A400BB9382 /* Rock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rock.h; sourceTree = "<group>"; };
 		67DA19B21C8F39A400BB9382 /* Rock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rock.m; sourceTree = "<group>"; };
+		67DA19B41C8F7E2D00BB9382 /* SettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsView.h; sourceTree = "<group>"; };
+		67DA19B51C8F7E2D00BB9382 /* SettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsView.m; sourceTree = "<group>"; };
+		67DA19B71C8F7E4500BB9382 /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		67DA19B91C8F8B7900BB9382 /* Droplets.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = Droplets.fsh; sourceTree = "<group>"; };
+		67DA19BB1C8FA22900BB9382 /* MyEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MyEmitter.sks; sourceTree = "<group>"; };
+		67DA19BC1C8FA22900BB9382 /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,10 +97,16 @@
 				67DA19B21C8F39A400BB9382 /* Rock.m */,
 				67DA19581C8DE6F400BB9382 /* DynamicWaterNode.h */,
 				67DA19591C8DE6F400BB9382 /* DynamicWaterNode.m */,
+				67DA19B91C8F8B7900BB9382 /* Droplets.fsh */,
 				67DA19451C8DE6C500BB9382 /* GameScene.sks */,
 				67DA19471C8DE6C500BB9382 /* GameViewController.h */,
 				67DA19481C8DE6C500BB9382 /* GameViewController.m */,
+				67DA19B41C8F7E2D00BB9382 /* SettingsView.h */,
+				67DA19B51C8F7E2D00BB9382 /* SettingsView.m */,
+				67DA19B71C8F7E4500BB9382 /* SettingsView.xib */,
 				67DA194A1C8DE6C500BB9382 /* Main.storyboard */,
+				67DA19BB1C8FA22900BB9382 /* MyEmitter.sks */,
+				67DA19BC1C8FA22900BB9382 /* spark.png */,
 				67DA194D1C8DE6C500BB9382 /* Assets.xcassets */,
 				67DA194F1C8DE6C500BB9382 /* LaunchScreen.storyboard */,
 				67DA19521C8DE6C500BB9382 /* Info.plist */,
@@ -163,12 +180,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				67DA19BE1C8FA22900BB9382 /* spark.png in Resources */,
+				67DA19BD1C8FA22900BB9382 /* MyEmitter.sks in Resources */,
 				67DA19461C8DE6C500BB9382 /* GameScene.sks in Resources */,
 				67DA19511C8DE6C500BB9382 /* LaunchScreen.storyboard in Resources */,
 				67DA195F1C8E542300BB9382 /* rock.png in Resources */,
 				67DA195E1C8E542300BB9382 /* metaparticle.png in Resources */,
 				67DA194E1C8DE6C500BB9382 /* Assets.xcassets in Resources */,
+				67DA19B81C8F7E4500BB9382 /* SettingsView.xib in Resources */,
 				67DA19601C8E542300BB9382 /* sky.png in Resources */,
+				67DA19BA1C8F8B7900BB9382 /* Droplets.fsh in Resources */,
 				67DA194C1C8DE6C500BB9382 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,6 +207,7 @@
 				67DA19441C8DE6C500BB9382 /* GameScene.m in Sources */,
 				67DA195A1C8DE6F400BB9382 /* DynamicWaterNode.m in Sources */,
 				67DA193E1C8DE6C500BB9382 /* main.m in Sources */,
+				67DA19B61C8F7E2D00BB9382 /* SettingsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

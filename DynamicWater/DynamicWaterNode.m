@@ -9,6 +9,26 @@
 #import "DynamicWaterNode.h"
 
 //**********************************************
+#pragma mark - ***** Droplet *****
+//**********************************************
+
+@interface Droplet : SKSpriteNode
+@property CGPoint velocity;
+
+
+@end
+
+@implementation Droplet
+
++(instancetype)droplet{
+    Droplet *droplet = [[Droplet alloc]initWithImageNamed:@"metaparticle"];
+    droplet.velocity = CGPointZero;
+    return droplet;
+}
+
+@end
+
+//**********************************************
 #pragma mark - ***** WaterJoint *****
 //**********************************************
 
@@ -60,6 +80,10 @@
 
 @property CGPathRef path;
 
+@property (nonatomic, strong) NSMutableArray *droplets;
+
+@property (nonatomic, strong) SKEffectNode *dropletsNode;
+
 @end
 
 
@@ -75,11 +99,32 @@
     // Init Properties
     self.surfaceHeight = surfaceHeight;
     self.width = width;
+    self.droplets = [[NSMutableArray alloc]init];
     
     // Shape Node
     self.shapeNode = [[SKShapeNode alloc]init];
     self.shapeNode.fillColor = fillColour;
+    self.shapeNode.zPosition = 2;
     [self addChild:self.shapeNode];
+    
+    // Droplets Node (SKEffectNode)
+    
+    self.dropletsNode = [[SKEffectNode alloc]init];
+    self.dropletsNode.position = CGPointZero;
+    self.dropletsNode.zPosition = 1;
+    self.dropletsNode.shouldRasterize = NO;
+    self.dropletsNode.shouldEnableEffects = YES;
+    self.dropletsNode.shader = [SKShader shaderWithFileNamed:@"Droplets.fsh"];
+    self.dropletsNode.hidden = NO;
+    [self addChild:self.dropletsNode];
+    
+
+    // Droplets Node (SKnode)
+//    self.dropletsNode = [SKNode node];
+//    self.dropletsNode.position = CGPointZero;
+//    self.dropletsNode.zPosition = 999;
+//    [self addChild:self.dropletsNode];
+    
     
     // Create joints
     NSMutableArray *mutableJoints = [[NSMutableArray alloc]initWithCapacity:numJoints];
@@ -93,10 +138,15 @@
     }
     self.joints = [NSArray arrayWithArray:mutableJoints];
     
+    // Initial render
+    [self render];
+    
+    
     
    
     return self;
 }
+
 
 #pragma mark - Splash
 
@@ -129,12 +179,59 @@
         }
     }
     
+    
+    // Add droplets
+    for (NSInteger i = 0; i < 50; i++) {
+        const float maxVelY = 500;
+        const float minVelY = 200;
+        const float maxVelX = -350;
+        const float minVelX = 350;
+        
+        float velY = minVelY + (maxVelY - minVelY) * [self randomFloatBetween0and1];
+        float velX = minVelX + (maxVelX - minVelX) * [self randomFloatBetween0and1];
+        
+        [self addDropletAt:CGPointMake(xLocation, self.surfaceHeight)
+                  velocity:CGPointMake(velX, velY)];
+    }
+    
+}
+
+-(float)randomFloatBetween0and1{
+    return (float)rand() / RAND_MAX;
+}
+
+#pragma mark - Droplets
+
+-(void)addDropletAt:(CGPoint)position velocity:(CGPoint)velocity{
+    
+    Droplet *droplet = [Droplet droplet];
+    droplet.velocity = velocity;
+    droplet.position = position;
+    droplet.zPosition = 1;
+    droplet.blendMode = SKBlendModeAlpha;
+    droplet.color = [UIColor blueColor];
+    droplet.colorBlendFactor = 1;
+    droplet.xScale = droplet.yScale = 3;
+    //droplet.color = [UIColor blueColor];
+    [self.dropletsNode addChild:droplet];
+    [self.droplets addObject:droplet];
+}
+
+-(void)removeDroplet:(Droplet*)droplet{
+    
+    [droplet removeFromParent];
+    [self.droplets removeObject:droplet];
 }
 
 
 #pragma mark - Update
 
 -(void)update:(CFTimeInterval)dt{
+    [self updateJoints:dt];
+    [self updateDroplets:dt];
+}
+
+-(void)updateJoints:(CFTimeInterval)dt{
     
     self.spread = 0.15 * 60;
     
@@ -175,9 +272,35 @@
             }
             
         }
-
-    }
         
+    }
+}
+
+-(void)updateDroplets:(CFTimeInterval)dt{
+    
+    const float gravity = -1200;
+    
+    NSMutableArray *dropletsToRemove = [[NSMutableArray alloc]init];
+    
+    for (Droplet *droplet in self.droplets) {
+        
+        // Apply Gravity
+        droplet.velocity = CGPointMake(droplet.velocity.x,
+                                       droplet.velocity.y + gravity * dt);
+        
+        droplet.position = CGPointMake(droplet.position.x + droplet.velocity.x * dt,
+                                       droplet.position.y + droplet.velocity.y * dt);
+        
+        // Remove if below surface
+        if (droplet.position.y + droplet.texture.size.height/2 + 30 < self.surfaceHeight) {
+            [dropletsToRemove addObject:droplet];
+        }
+    }
+    
+    for (Droplet *droplet in dropletsToRemove) {
+        [self removeDroplet:droplet];
+    }
+    
 }
 
 #pragma mark - Render
