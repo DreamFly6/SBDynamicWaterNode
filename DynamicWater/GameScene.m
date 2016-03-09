@@ -9,6 +9,7 @@
 #import "GameScene.h"
 #import "DynamicWaterNode.h"
 #import "Rock.h"
+#import "SettingsView.h"
 
 #define kFixedTimeStep (1.0f/500)
 
@@ -18,7 +19,9 @@ typedef enum : NSUInteger {
     ZPositionWater,
 } ZPositions;
 
-@interface GameScene ()
+@interface GameScene () <SettingsViewDelegate>
+@property (nonatomic, strong) SettingsView *settingsView;
+
 @property (nonatomic, strong) SKSpriteNode *skySprite;
 @property (nonatomic, strong) DynamicWaterNode *waterNode;
 
@@ -50,6 +53,28 @@ typedef enum : NSUInteger {
     self.waterNode.zPosition = ZPositionWater;
     self.waterNode.alpha = 0.7;
     [self addChild:self.waterNode];
+    
+    // Settings Button
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    [button setTitle:@"Settings" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    button.translatesAutoresizingMaskIntoConstraints = NO;
+    [button addTarget:self action:@selector(showSettingsView) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                          attribute:NSLayoutAttributeRight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeRight
+                                                         multiplier:1
+                                                           constant:-8]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                          attribute:NSLayoutAttributeTop
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeTop
+                                                         multiplier:1
+                                                           constant:8]];
     
 }
 
@@ -159,6 +184,27 @@ typedef enum : NSUInteger {
 
 -(void)lateUpdate:(CFTimeInterval)dt{
     [self.waterNode render];
+}
+
+#pragma mark - Settings View
+
+-(void)showSettingsView{
+    if (self.settingsView) { return; }
+    
+    self.settingsView = [SettingsView instanceFromNib];
+    self.settingsView.frame = self.view.bounds;
+    self.settingsView.delegate = self;
+    [self.view addSubview:self.settingsView];
+    
+}
+
+-(void)settingsViewShouldClose:(SettingsView *)settingsView{
+    
+    if (self.settingsView) {
+        [self.settingsView removeFromSuperview];
+        self.settingsView = nil;
+    }
+    
 }
 
 @end

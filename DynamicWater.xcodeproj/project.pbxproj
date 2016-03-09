@@ -20,6 +20,8 @@
 		67DA195F1C8E542300BB9382 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DA195C1C8E542300BB9382 /* rock.png */; };
 		67DA19601C8E542300BB9382 /* sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DA195D1C8E542300BB9382 /* sky.png */; };
 		67DA19B31C8F39A400BB9382 /* Rock.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19B21C8F39A400BB9382 /* Rock.m */; };
+		67DA19C11C906DD800BB9382 /* SettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19C01C906DD800BB9382 /* SettingsView.m */; };
+		67DA19C31C906DF100BB9382 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67DA19C21C906DF100BB9382 /* SettingsView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +45,9 @@
 		67DA195D1C8E542300BB9382 /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky.png; sourceTree = "<group>"; };
 		67DA19B11C8F39A400BB9382 /* Rock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rock.h; sourceTree = "<group>"; };
 		67DA19B21C8F39A400BB9382 /* Rock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Rock.m; sourceTree = "<group>"; };
+		67DA19BF1C906DD800BB9382 /* SettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsView.h; sourceTree = "<group>"; };
+		67DA19C01C906DD800BB9382 /* SettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsView.m; sourceTree = "<group>"; };
+		67DA19C21C906DF100BB9382 /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +95,9 @@
 				67DA19471C8DE6C500BB9382 /* GameViewController.h */,
 				67DA19481C8DE6C500BB9382 /* GameViewController.m */,
 				67DA194A1C8DE6C500BB9382 /* Main.storyboard */,
+				67DA19BF1C906DD800BB9382 /* SettingsView.h */,
+				67DA19C01C906DD800BB9382 /* SettingsView.m */,
+				67DA19C21C906DF100BB9382 /* SettingsView.xib */,
 				67DA194D1C8DE6C500BB9382 /* Assets.xcassets */,
 				67DA194F1C8DE6C500BB9382 /* LaunchScreen.storyboard */,
 				67DA19521C8DE6C500BB9382 /* Info.plist */,
@@ -168,6 +176,7 @@
 				67DA195F1C8E542300BB9382 /* rock.png in Resources */,
 				67DA195E1C8E542300BB9382 /* metaparticle.png in Resources */,
 				67DA194E1C8DE6C500BB9382 /* Assets.xcassets in Resources */,
+				67DA19C31C906DF100BB9382 /* SettingsView.xib in Resources */,
 				67DA19601C8E542300BB9382 /* sky.png in Resources */,
 				67DA194C1C8DE6C500BB9382 /* Main.storyboard in Resources */,
 			);
@@ -186,6 +195,7 @@
 				67DA19441C8DE6C500BB9382 /* GameScene.m in Sources */,
 				67DA195A1C8DE6F400BB9382 /* DynamicWaterNode.m in Sources */,
 				67DA193E1C8DE6C500BB9382 /* main.m in Sources */,
+				67DA19C11C906DD800BB9382 /* SettingsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +344,7 @@
 				67DA19571C8DE6C500BB9382 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
