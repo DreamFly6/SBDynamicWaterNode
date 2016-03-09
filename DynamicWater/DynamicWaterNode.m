@@ -15,7 +15,7 @@
 @interface WaterJoint : NSObject
 
 @property (nonatomic) CGPoint position;
-@property (nonatomic) CGFloat speed;
+@property (nonatomic) CGFloat velocity;
 @property (nonatomic) CGFloat damping;
 @property (nonatomic) CGFloat tension;
 @end
@@ -26,9 +26,9 @@
     
     if (self = [super init]) {
         self.position = CGPointZero;
-        self.speed = 0; // <-- change to velocity
-        self.damping = 0.04 * 60;
-        self.tension = 0.03 * 60;
+        self.velocity = 0;
+        self.damping = 0;
+        self.tension = 0;
     }
         return self;
 }
@@ -40,10 +40,10 @@
 - (void)update:(NSTimeInterval)dt {
     
     CGFloat y = self.position.y;
-    CGFloat acceleration = (-self.tension * y) - (self.speed * self.damping);
+    CGFloat acceleration = (-self.tension * y) - (self.velocity * self.damping);
 
-    self.position = CGPointMake(self.position.x, self.position.y + (self.speed * 60 * dt));
-    self.speed += acceleration * dt;
+    self.position = CGPointMake(self.position.x, self.position.y + (self.velocity * 60 * dt));
+    self.velocity += acceleration * dt;
 }
 
 @end
@@ -56,7 +56,6 @@
 @property (nonatomic, strong) NSArray<WaterJoint*> *joints;
 @property (nonatomic, strong) SKShapeNode *shapeNode;
 @property float width;
-@property float spread;
 
 @property CGPathRef path;
 
@@ -65,7 +64,7 @@
 
 @implementation DynamicWaterNode
 
-#pragma mark - Setup
+#pragma mark - LifeCycle
 
 -(instancetype)initWithWidth:(float)width numJoints:(NSInteger)numJoints surfaceHeight:(float)surfaceHeight fillColour:(UIColor*)fillColour{
     
@@ -93,9 +92,36 @@
     }
     self.joints = [NSArray arrayWithArray:mutableJoints];
     
-    
+    // Set default simulation variables
+    [self setDefaultValues];
    
     return self;
+}
+
+-(void)dealloc{
+    CGPathRelease(self.path);
+}
+
+#pragma mark - Simulation Variables
+
+-(void)setDefaultValues{
+    self.tension = 1.8;
+    self.damping = 2.4;
+    self.spread = 9;
+}
+
+-(void)setTension:(float)tension{
+    _tension = tension;
+    for (WaterJoint *joint in self.joints) {
+        joint.tension = tension;
+    }
+}
+
+-(void)setDamping:(float)damping{
+    _damping = damping;
+    for (WaterJoint *joint in self.joints) {
+        joint.damping = damping;
+    }
 }
 
 #pragma mark - Splash
@@ -120,12 +146,12 @@
         }
     }
     
-    closestJoint.speed = -force;
+    closestJoint.velocity = -force;
     
     for (WaterJoint *joint in self.joints) {
         CGFloat distance = fabs(joint.position.x - closestJoint.position.x);
         if (distance < width) {
-            joint.speed = distance / width * -force;
+            joint.velocity = distance / width * -force;
         }
     }
     
@@ -136,7 +162,6 @@
 
 -(void)update:(CFTimeInterval)dt{
     
-    self.spread = 0.15 * 60;
     
     for (WaterJoint *joint in self.joints) {
         [joint update:dt];
@@ -154,12 +179,12 @@
             if (i > 0) {
                 WaterJoint *previousJoint = self.joints[i-1];
                 leftDeltas[i] = self.spread * (currentJoint.position.y - previousJoint.position.y);
-                previousJoint.speed += leftDeltas[i] * dt;
+                previousJoint.velocity += leftDeltas[i] * dt;
             }
             if (i < self.joints.count-1) {
                 WaterJoint *nextJoint = self.joints[i+1];
                 rightDeltas[i] = self.spread * (currentJoint.position.y - nextJoint.position.y);
-                nextJoint.speed += rightDeltas[i] * dt;
+                nextJoint.velocity += rightDeltas[i] * dt;
             }
         }
         
@@ -185,12 +210,12 @@
 -(void)render{
     
     CGPathRelease(self.path);
-    self.path = [self newPathFromJoints:self.joints];
+    self.path = [self pathFromJoints:self.joints];
     
     [self.shapeNode setPath:self.path];
 }
 
-- (CGPathRef)newPathFromJoints:(NSArray*)joints {
+- (CGPathRef)pathFromJoints:(NSArray*)joints {
     
     CGMutablePathRef path = CGPathCreateMutable();
     

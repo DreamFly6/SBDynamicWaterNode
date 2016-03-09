@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "DynamicWaterNode.h"
 
+@class GameScene;
+
 @protocol SettingsViewDelegate;
 
 @interface SettingsView : UIView
 @property (nonatomic, weak) id<SettingsViewDelegate> delegate;
 
+@property (nonatomic, weak) GameScene *gameScene;
 @property (nonatomic, weak) DynamicWaterNode *waterNode;
 +(id)instanceFromNib;
 
@@ -21,4 +24,5 @@
 
 @protocol SettingsViewDelegate <NSObject>
 -(void)settingsViewShouldClose:(SettingsView*)settingsView;
+-(void)settingsViewWantsRestoreDefaultValues:(SettingsView*)settingsView;
 @end

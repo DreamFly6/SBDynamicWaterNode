@@ -22,6 +22,9 @@
 		67DA19B31C8F39A400BB9382 /* Rock.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19B21C8F39A400BB9382 /* Rock.m */; };
 		67DA19C11C906DD800BB9382 /* SettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19C01C906DD800BB9382 /* SettingsView.m */; };
 		67DA19C31C906DF100BB9382 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67DA19C21C906DF100BB9382 /* SettingsView.xib */; };
+		67DA19C71C90794800BB9382 /* SettingsSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19C51C90794800BB9382 /* SettingsSliderCell.m */; };
+		67DA19C81C90794800BB9382 /* SettingsSliderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67DA19C61C90794800BB9382 /* SettingsSliderCell.xib */; };
+		67DA19CB1C90809D00BB9382 /* SettingsCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19CA1C90809D00BB9382 /* SettingsCellInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,11 @@
 		67DA19BF1C906DD800BB9382 /* SettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsView.h; sourceTree = "<group>"; };
 		67DA19C01C906DD800BB9382 /* SettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsView.m; sourceTree = "<group>"; };
 		67DA19C21C906DF100BB9382 /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		67DA19C41C90794800BB9382 /* SettingsSliderCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsSliderCell.h; sourceTree = "<group>"; };
+		67DA19C51C90794800BB9382 /* SettingsSliderCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsSliderCell.m; sourceTree = "<group>"; };
+		67DA19C61C90794800BB9382 /* SettingsSliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsSliderCell.xib; sourceTree = "<group>"; };
+		67DA19C91C90809D00BB9382 /* SettingsCellInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsCellInfo.h; sourceTree = "<group>"; };
+		67DA19CA1C90809D00BB9382 /* SettingsCellInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsCellInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,9 +103,14 @@
 				67DA19471C8DE6C500BB9382 /* GameViewController.h */,
 				67DA19481C8DE6C500BB9382 /* GameViewController.m */,
 				67DA194A1C8DE6C500BB9382 /* Main.storyboard */,
+				67DA19C91C90809D00BB9382 /* SettingsCellInfo.h */,
+				67DA19CA1C90809D00BB9382 /* SettingsCellInfo.m */,
 				67DA19BF1C906DD800BB9382 /* SettingsView.h */,
 				67DA19C01C906DD800BB9382 /* SettingsView.m */,
 				67DA19C21C906DF100BB9382 /* SettingsView.xib */,
+				67DA19C41C90794800BB9382 /* SettingsSliderCell.h */,
+				67DA19C51C90794800BB9382 /* SettingsSliderCell.m */,
+				67DA19C61C90794800BB9382 /* SettingsSliderCell.xib */,
 				67DA194D1C8DE6C500BB9382 /* Assets.xcassets */,
 				67DA194F1C8DE6C500BB9382 /* LaunchScreen.storyboard */,
 				67DA19521C8DE6C500BB9382 /* Info.plist */,
@@ -174,6 +187,7 @@
 				67DA19461C8DE6C500BB9382 /* GameScene.sks in Resources */,
 				67DA19511C8DE6C500BB9382 /* LaunchScreen.storyboard in Resources */,
 				67DA195F1C8E542300BB9382 /* rock.png in Resources */,
+				67DA19C81C90794800BB9382 /* SettingsSliderCell.xib in Resources */,
 				67DA195E1C8E542300BB9382 /* metaparticle.png in Resources */,
 				67DA194E1C8DE6C500BB9382 /* Assets.xcassets in Resources */,
 				67DA19C31C906DF100BB9382 /* SettingsView.xib in Resources */,
@@ -190,8 +204,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				67DA19491C8DE6C500BB9382 /* GameViewController.m in Sources */,
+				67DA19CB1C90809D00BB9382 /* SettingsCellInfo.m in Sources */,
 				67DA19411C8DE6C500BB9382 /* AppDelegate.m in Sources */,
 				67DA19B31C8F39A400BB9382 /* Rock.m in Sources */,
+				67DA19C71C90794800BB9382 /* SettingsSliderCell.m in Sources */,
 				67DA19441C8DE6C500BB9382 /* GameScene.m in Sources */,
 				67DA195A1C8DE6F400BB9382 /* DynamicWaterNode.m in Sources */,
 				67DA193E1C8DE6C500BB9382 /* main.m in Sources */,

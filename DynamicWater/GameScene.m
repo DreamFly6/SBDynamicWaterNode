@@ -13,6 +13,8 @@
 
 #define kFixedTimeStep (1.0f/500)
 
+#define kSurfaceHeight 235
+
 typedef enum : NSUInteger {
     ZPositionSky,
     ZPositionRock,
@@ -28,8 +30,9 @@ typedef enum : NSUInteger {
 @property CFTimeInterval lastFrameTime;
 @property BOOL hasReferenceFrameTime;
 
-@property (nonatomic, strong) Rock *rock;
 @property (nonatomic, strong) NSMutableArray *rocks;
+
+
 
 @end
 
@@ -48,7 +51,7 @@ typedef enum : NSUInteger {
     [self addChild:self.skySprite];
 
     // Water
-    self.waterNode = [[DynamicWaterNode alloc]initWithWidth:self.size.width numJoints:100 surfaceHeight:200 fillColour:[UIColor blueColor]];
+    self.waterNode = [[DynamicWaterNode alloc]initWithWidth:self.size.width numJoints:100 surfaceHeight:kSurfaceHeight fillColour:[UIColor blueColor]];
     self.waterNode.position = CGPointMake(self.size.width/2, 0);
     self.waterNode.zPosition = ZPositionWater;
     self.waterNode.alpha = 0.7;
@@ -76,45 +79,30 @@ typedef enum : NSUInteger {
                                                          multiplier:1
                                                            constant:8]];
     
+    // Set Default Values
+    [self setDefaultValues];
+
+}
+
+-(void)setDefaultValues{
+    self.waterNode.surfaceHeight = kSurfaceHeight;
+    self.splashWidth = 20;
+    self.splashForceMultiplier = 0.125;
+    [self.waterNode setDefaultValues];
 }
 
 #pragma mark - Touch Handling
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    if (self.rock) { return; }
-    
-    CGPoint location = [[touches anyObject] locationInNode:self];
-    self.rock = [[Rock alloc]initWithImageNamed:@"rock"];
-    self.rock.position = location;
-    self.rock.zPosition = ZPositionRock;
-    [self addChild:self.rock];
-    
-}
-
--(void)touchesCancelled:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    if (self.rock) {
-        [self.rock removeFromParent];
-        self.rock = nil;
+    for (UITouch *touch in touches) {
+        CGPoint location = [touch locationInNode:self];
+        Rock *rock = [[Rock alloc]initWithImageNamed:@"rock"];
+        rock.position = location;
+        rock.zPosition = ZPositionRock;
+        [self addChild:rock];
+        [self.rocks addObject:rock];
     }
-}
-
--(void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
-    if (!self.rock) { return; }
-    
-    CGPoint location = [[touches anyObject] locationInNode:self];
-    self.rock.position = location;
-}
-
--(void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
-    if (!self.rock) { return; }
-    
-    CGPoint location = [[touches anyObject] locationInNode:self];
-    self.rock.position = location;
-    [self.rocks addObject:self.rock];
-    self.rock = nil;
 }
 
 #pragma mark - Update
@@ -166,7 +154,9 @@ typedef enum : NSUInteger {
         // Splash
         if (rock.isAboveWater && rock.position.y <= self.waterNode.surfaceHeight) {
             rock.isAboveWater = NO;
-            [self.waterNode splashAtX:rock.position.x force:-rock.velocity.y* 0.125 width:20];
+            [self.waterNode splashAtX:rock.position.x
+                                force:-rock.velocity.y * self.splashForceMultiplier
+                                width:self.splashWidth];
 
         }
         
@@ -194,6 +184,8 @@ typedef enum : NSUInteger {
     self.settingsView = [SettingsView instanceFromNib];
     self.settingsView.frame = self.view.bounds;
     self.settingsView.delegate = self;
+    self.settingsView.gameScene = self;
+    self.settingsView.waterNode = self.waterNode;
     [self.view addSubview:self.settingsView];
     
 }
@@ -205,6 +197,10 @@ typedef enum : NSUInteger {
         self.settingsView = nil;
     }
     
+}
+
+-(void)settingsViewWantsRestoreDefaultValues:(SettingsView *)settingsView{
+    [self setDefaultValues];
 }
 
 @end

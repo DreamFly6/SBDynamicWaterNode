@@ -11,10 +11,14 @@
 @interface DynamicWaterNode : SKNode
 
 @property float surfaceHeight;
+@property (nonatomic) float tension;
+@property (nonatomic) float damping;
+@property float spread;
 
 
 -(instancetype)initWithWidth:(float)width numJoints:(NSInteger)numJoints surfaceHeight:(float)surfaceHeight fillColour:(UIColor*)fillColour;
 
+-(void)setDefaultValues;
 
 -(void)update:(CFTimeInterval)dt;
 
