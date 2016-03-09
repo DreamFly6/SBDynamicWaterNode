@@ -8,6 +8,21 @@
 
 #import "DynamicWaterNode.h"
 
+@interface UIColor (DynamicWaterNodeExtensions)
+-(GLKVector4)vector4Value;
+@end
+
+@implementation UIColor (DynamicWaterNodeExtensions)
+
+-(GLKVector4)vector4Value{
+    
+    CGFloat r, g, b, a;
+    [self getRed:&r green:&g blue:&b alpha:&a];
+    return GLKVector4Make(r, g, b, a);
+}
+
+@end
+
 //**********************************************
 #pragma mark - ***** Droplet *****
 //**********************************************
@@ -35,7 +50,7 @@
 @interface WaterJoint : NSObject
 
 @property (nonatomic) CGPoint position;
-@property (nonatomic) CGFloat speed;
+@property (nonatomic) CGFloat velocity;
 @property (nonatomic) CGFloat damping;
 @property (nonatomic) CGFloat tension;
 @end
@@ -46,9 +61,9 @@
     
     if (self = [super init]) {
         self.position = CGPointZero;
-        self.speed = 0; // <-- change to velocity
-        self.damping = 0.04 * 60;
-        self.tension = 0.03 * 60;
+        self.velocity = 0;
+        self.damping = 0;
+        self.tension = 0;
     }
         return self;
 }
@@ -60,10 +75,10 @@
 - (void)update:(NSTimeInterval)dt {
     
     CGFloat y = self.position.y;
-    CGFloat acceleration = (-self.tension * y) - (self.speed * self.damping);
+    CGFloat acceleration = (-self.tension * y) - (self.velocity * self.damping);
 
-    self.position = CGPointMake(self.position.x, self.position.y + (self.speed * 60 * dt));
-    self.speed += acceleration * dt;
+    self.position = CGPointMake(self.position.x, self.position.y + (self.velocity * 60 * dt));
+    self.velocity += acceleration * dt;
 }
 
 @end
@@ -76,7 +91,6 @@
 @property (nonatomic, strong) NSArray<WaterJoint*> *joints;
 @property (nonatomic, strong) SKShapeNode *shapeNode;
 @property float width;
-@property float spread;
 
 @property CGPathRef path;
 
@@ -89,7 +103,7 @@
 
 @implementation DynamicWaterNode
 
-#pragma mark - Setup
+#pragma mark - LifeCycle
 
 -(instancetype)initWithWidth:(float)width numJoints:(NSInteger)numJoints surfaceHeight:(float)surfaceHeight fillColour:(UIColor*)fillColour{
     
@@ -110,12 +124,16 @@
     self.dropletsNode.shouldRasterize = NO;
     self.dropletsNode.shouldEnableEffects = YES;
     self.dropletsNode.shader = [SKShader shaderWithFileNamed:@"Droplets.fsh"];
+    self.dropletsNode.shader.uniforms = @[[SKUniform uniformWithName:@"u_colour" floatVector4:[fillColour vector4Value]]];
+    
     self.dropletsNode.hidden = NO;
     [self addChild:self.dropletsNode];
     
     // Shape Node
     self.shapeNode = [[SKShapeNode alloc]init];
-    self.shapeNode.fillColor = fillColour;
+    self.shapeNode.fillColor = [UIColor blackColor];
+    self.shapeNode.strokeColor = [UIColor greenColor];
+    self.shapeNode.glowWidth = 2;
     self.shapeNode.zPosition = 2;
     [self.dropletsNode addChild:self.shapeNode];
 
@@ -138,15 +156,46 @@
     }
     self.joints = [NSArray arrayWithArray:mutableJoints];
     
+    // Set default simulation variables
+    [self setDefaultValues];
+    
     // Initial render
-    [self renderWater];
-    
-    
-    
+    [self render];
    
     return self;
 }
 
+-(void)dealloc{
+    CGPathRelease(self.path);
+}
+
+#pragma mark - Simulation Variables
+
+-(void)setDefaultValues{
+    self.tension = 1.8;
+    self.damping = 2.4;
+    self.spread = 9;
+    self.dropletsForce = 1;
+    self.dropletsDensity = 1;
+}
+
+-(void)setTension:(float)tension{
+    _tension = tension;
+    for (WaterJoint *joint in self.joints) {
+        joint.tension = tension;
+    }
+}
+
+-(void)setDamping:(float)damping{
+    _damping = damping;
+    for (WaterJoint *joint in self.joints) {
+        joint.damping = damping;
+    }
+}
+
+-(void)setColour:(UIColor*)colour{
+    [self.dropletsNode.shader uniformNamed:@"u_colour"].floatVector4Value = [colour vector4Value];
+}
 
 #pragma mark - Splash
 
@@ -170,22 +219,24 @@
         }
     }
     
-    closestJoint.speed = -force;
+    closestJoint.velocity = -force;
     
     for (WaterJoint *joint in self.joints) {
         CGFloat distance = fabs(joint.position.x - closestJoint.position.x);
         if (distance < width) {
-            joint.speed = distance / width * -force;
+            joint.velocity = distance / width * -force;
         }
     }
     
     
     // Add droplets
-    for (NSInteger i = 0; i < 50; i++) {
-        const float maxVelY = 500;
-        const float minVelY = 200;
-        const float maxVelX = -350;
-        const float minVelX = 350;
+    NSInteger numDroplets = 20 * force/100 * self.dropletsDensity;
+    NSLog(@"Num Droplets: %li", (long)numDroplets);
+    for (NSInteger i = 0; i < numDroplets; i++) {
+        const float maxVelY = 500 * force/100*self.dropletsForce;
+        const float minVelY = 200 * force/100*self.dropletsForce;
+        const float maxVelX = -350 * force/100*self.dropletsForce;
+        const float minVelX = 350 * force/100*self.dropletsForce;
         
         float velY = minVelY + (maxVelY - minVelY) * [self randomFloatBetween0and1];
         float velX = minVelX + (maxVelX - minVelX) * [self randomFloatBetween0and1];
@@ -233,7 +284,6 @@
 
 -(void)updateJoints:(CFTimeInterval)dt{
     
-    self.spread = 0.15 * 60;
     
     for (WaterJoint *joint in self.joints) {
         [joint update:dt];
@@ -251,12 +301,12 @@
             if (i > 0) {
                 WaterJoint *previousJoint = self.joints[i-1];
                 leftDeltas[i] = self.spread * (currentJoint.position.y - previousJoint.position.y);
-                previousJoint.speed += leftDeltas[i] * dt;
+                previousJoint.velocity += leftDeltas[i] * dt;
             }
             if (i < self.joints.count-1) {
                 WaterJoint *nextJoint = self.joints[i+1];
                 rightDeltas[i] = self.spread * (currentJoint.position.y - nextJoint.position.y);
-                nextJoint.speed += rightDeltas[i] * dt;
+                nextJoint.velocity += rightDeltas[i] * dt;
             }
         }
         
@@ -305,15 +355,15 @@
 
 #pragma mark - Render
 
--(void)renderWater{
+-(void)render{
     
     CGPathRelease(self.path);
-    self.path = [self newPathFromJoints:self.joints];
+    self.path = [self pathFromJoints:self.joints];
     
     [self.shapeNode setPath:self.path];
 }
 
-- (CGPathRef)newPathFromJoints:(NSArray*)joints {
+- (CGPathRef)pathFromJoints:(NSArray*)joints {
     
     CGMutablePathRef path = CGPathCreateMutable();
     

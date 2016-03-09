@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
     </dependencies>
     <objects>
@@ -10,13 +9,64 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SettingsView">
             <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1dB-GY-Zxa" userLabel="Container">
+                    <rect key="frame" x="9" y="16" width="463" height="288"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d4x-eJ-mL1">
+                            <rect key="frame" x="416" y="258" width="39" height="30"/>
+                            <state key="normal" title="Close"/>
+                            <connections>
+                                <action selector="closeButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="4pY-L9-RPj"/>
+                            </connections>
+                        </button>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gtz-wg-vMp">
+                            <rect key="frame" x="0.0" y="0.0" width="463" height="250"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" priority="750" constant="250" id="ILr-sy-Aeh"/>
+                                <constraint firstAttribute="width" constant="463" id="dIX-gP-nqp"/>
+                            </constraints>
+                        </tableView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBf-j1-3gA">
+                            <rect key="frame" x="8" y="258" width="114" height="30"/>
+                            <state key="normal" title="Restore Defaults"/>
+                            <connections>
+                                <action selector="restoreDefaultsButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="guv-eE-zbG"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="gtz-wg-vMp" secondAttribute="trailing" id="8C1-cZ-mnc"/>
+                        <constraint firstAttribute="bottom" secondItem="QBf-j1-3gA" secondAttribute="bottom" id="N8d-ch-kul"/>
+                        <constraint firstItem="QBf-j1-3gA" firstAttribute="leading" secondItem="1dB-GY-Zxa" secondAttribute="leading" constant="8" id="SaK-TF-YEc"/>
+                        <constraint firstItem="gtz-wg-vMp" firstAttribute="top" secondItem="1dB-GY-Zxa" secondAttribute="top" id="VzI-Gn-XLK"/>
+                        <constraint firstItem="d4x-eJ-mL1" firstAttribute="top" secondItem="gtz-wg-vMp" secondAttribute="bottom" constant="8" id="WDH-Yf-Yl5"/>
+                        <constraint firstAttribute="bottom" secondItem="d4x-eJ-mL1" secondAttribute="bottom" id="cTg-bl-39J"/>
+                        <constraint firstItem="QBf-j1-3gA" firstAttribute="top" secondItem="gtz-wg-vMp" secondAttribute="bottom" constant="8" id="kuM-7Z-ZFU"/>
+                        <constraint firstItem="gtz-wg-vMp" firstAttribute="leading" secondItem="1dB-GY-Zxa" secondAttribute="leading" id="mwR-Ir-jtX"/>
+                        <constraint firstAttribute="trailing" secondItem="d4x-eJ-mL1" secondAttribute="trailing" constant="8" id="nJG-Yl-6MC"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="1dB-GY-Zxa" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="7H8-z9-XRz"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="1dB-GY-Zxa" secondAttribute="bottom" constant="8" id="NqV-xI-JqP"/>
+                <constraint firstItem="1dB-GY-Zxa" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SVL-Li-oQG"/>
+                <constraint firstItem="1dB-GY-Zxa" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="TqA-xH-zMe"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="475" y="478"/>
+            <connections>
+                <outlet property="containerView" destination="1dB-GY-Zxa" id="Tjz-wf-noU"/>
+                <outlet property="tableView" destination="gtz-wg-vMp" id="O3k-gt-iv1"/>
+                <outlet property="tableViewHeightConstraint" destination="ILr-sy-Aeh" id="WRF-gt-DRY"/>
+            </connections>
         </view>
     </objects>
 </document>

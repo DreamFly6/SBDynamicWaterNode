@@ -9,8 +9,11 @@
 #import "GameScene.h"
 #import "DynamicWaterNode.h"
 #import "Rock.h"
+#import "SettingsView.h"
 
 #define kFixedTimeStep (1.0f/500)
+
+#define kSurfaceHeight 235
 
 typedef enum : NSUInteger {
     ZPositionSky,
@@ -18,7 +21,9 @@ typedef enum : NSUInteger {
     ZPositionWater,
 } ZPositions;
 
-@interface GameScene ()
+@interface GameScene () <SettingsViewDelegate>
+@property (nonatomic, strong) SettingsView *settingsView;
+
 @property (nonatomic, strong) SKSpriteNode *skySprite;
 @property (nonatomic, strong) DynamicWaterNode *waterNode;
 
@@ -44,23 +49,51 @@ typedef enum : NSUInteger {
     [self addChild:self.skySprite];
 
     // Water
-    self.waterNode = [[DynamicWaterNode alloc]initWithWidth:self.size.width numJoints:100 surfaceHeight:200 fillColour:[UIColor blueColor]];
+    self.waterNode = [[DynamicWaterNode alloc]initWithWidth:self.size.width numJoints:100 surfaceHeight:kSurfaceHeight fillColour:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.5]];
     self.waterNode.position = CGPointMake(self.size.width/2, 0);
     self.waterNode.zPosition = ZPositionWater;
     //self.waterNode.alpha = 0.7;
     [self addChild:self.waterNode];
+        
+    // Settings Button
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    [button setTitle:@"Settings" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    button.translatesAutoresizingMaskIntoConstraints = NO;
+    [button addTarget:self action:@selector(showSettingsView) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:button];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                          attribute:NSLayoutAttributeRight
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeRight
+                                                         multiplier:1
+                                                           constant:-8]];
+    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:button
+                                                          attribute:NSLayoutAttributeTop
+                                                          relatedBy:NSLayoutRelationEqual
+                                                             toItem:self.view
+                                                          attribute:NSLayoutAttributeTop
+                                                         multiplier:1
+                                                           constant:8]];
     
-   
-    
+    // Set Default Values
+    [self setDefaultValues];
+
+}
+
+-(void)setDefaultValues{
+    self.waterNode.surfaceHeight = kSurfaceHeight;
+    self.splashWidth = 20;
+    self.splashForceMultiplier = 0.125;
+    [self.waterNode setDefaultValues];
 }
 
 #pragma mark - Touch Handling
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     
-    
     for (UITouch *touch in touches) {
-        
         CGPoint location = [touch locationInNode:self];
         Rock *rock = [[Rock alloc]initWithImageNamed:@"rock"];
         rock.position = location;
@@ -68,7 +101,6 @@ typedef enum : NSUInteger {
         [self addChild:rock];
         [self.rocks addObject:rock];
     }
-    
 }
 
 #pragma mark - Update
@@ -120,7 +152,9 @@ typedef enum : NSUInteger {
         // Splash
         if (rock.isAboveWater && rock.position.y <= self.waterNode.surfaceHeight) {
             rock.isAboveWater = NO;
-            [self.waterNode splashAtX:rock.position.x force:-rock.velocity.y* 0.125 width:20];
+            [self.waterNode splashAtX:rock.position.x
+                                force:-rock.velocity.y * self.splashForceMultiplier
+                                width:self.splashWidth];
 
         }
         
@@ -137,7 +171,34 @@ typedef enum : NSUInteger {
 }
 
 -(void)lateUpdate:(CFTimeInterval)dt{
-    [self.waterNode renderWater];
+    [self.waterNode render];
+}
+
+#pragma mark - Settings View
+
+-(void)showSettingsView{
+    if (self.settingsView) { return; }
+    
+    self.settingsView = [SettingsView instanceFromNib];
+    self.settingsView.frame = self.view.bounds;
+    self.settingsView.delegate = self;
+    self.settingsView.gameScene = self;
+    self.settingsView.waterNode = self.waterNode;
+    [self.view addSubview:self.settingsView];
+    
+}
+
+-(void)settingsViewShouldClose:(SettingsView *)settingsView{
+    
+    if (self.settingsView) {
+        [self.settingsView removeFromSuperview];
+        self.settingsView = nil;
+    }
+    
+}
+
+-(void)settingsViewWantsRestoreDefaultValues:(SettingsView *)settingsView{
+    [self setDefaultValues];
 }
 
 @end

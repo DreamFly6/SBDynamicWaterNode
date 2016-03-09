@@ -14,8 +14,6 @@
 @property (nonatomic) float tension;
 @property (nonatomic) float damping;
 @property float spread;
-@property float dropletsForce;
-@property float dropletsDensity;
 
 #pragma mark - Init
 /** 
@@ -31,9 +29,6 @@
 /** Reset simulation variables to defaults */
 -(void)setDefaultValues;
 
-#pragma mark - Colour
--(void)setColour:(UIColor*)colour;
-
 #pragma mark - Update
 /**
  Step the time of the simulation
@@ -41,9 +36,24 @@
  */
 -(void)update:(CFTimeInterval)dt;
 
+<<<<<<< HEAD
+-(void)renderWater;
+=======
+>>>>>>> master
 
 #pragma mark - Splash
+/**
+ Make a splash (width will be 0)
+ @param xLocation The X location to make the splash at
+ @param force The force of the splash
+ */
 -(void)splashAtX:(float)xLocation force:(CGFloat)force;
+/**
+ Make a splash
+ @param xLocation The X location to make the splash at
+ @param force The force of the splash
+ @param width the width of the splash
+ */
 -(void)splashAtX:(float)xLocation force:(CGFloat)force width:(float)width;
 
 #pragma mark - Render
