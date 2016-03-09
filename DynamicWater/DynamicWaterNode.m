@@ -101,14 +101,9 @@
     self.width = width;
     self.droplets = [[NSMutableArray alloc]init];
     
-    // Shape Node
-    self.shapeNode = [[SKShapeNode alloc]init];
-    self.shapeNode.fillColor = fillColour;
-    self.shapeNode.zPosition = 2;
-    [self addChild:self.shapeNode];
+  
     
     // Droplets Node (SKEffectNode)
-    
     self.dropletsNode = [[SKEffectNode alloc]init];
     self.dropletsNode.position = CGPointZero;
     self.dropletsNode.zPosition = 1;
@@ -118,6 +113,11 @@
     self.dropletsNode.hidden = NO;
     [self addChild:self.dropletsNode];
     
+    // Shape Node
+    self.shapeNode = [[SKShapeNode alloc]init];
+    self.shapeNode.fillColor = fillColour;
+    self.shapeNode.zPosition = 2;
+    [self.dropletsNode addChild:self.shapeNode];
 
     // Droplets Node (SKnode)
 //    self.dropletsNode = [SKNode node];
