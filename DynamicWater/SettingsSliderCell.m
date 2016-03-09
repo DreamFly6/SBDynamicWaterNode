@@ -50,7 +50,7 @@
     
     NSString *text = self.info.title;
     if (self.info.showValueReadout) {
-        text = [text stringByAppendingString:[NSString stringWithFormat:@"( %g)", self.slider.value]];
+        text = [text stringByAppendingString:[NSString stringWithFormat:@" (%g)", self.slider.value]];
     }
     self.label.text = text;
 }
