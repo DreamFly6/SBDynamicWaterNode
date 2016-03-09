@@ -137,7 +137,7 @@ typedef enum : NSUInteger {
 }
 
 -(void)lateUpdate:(CFTimeInterval)dt{
-    [self.waterNode render];
+    [self.waterNode renderWater];
 }
 
 @end

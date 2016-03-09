@@ -18,7 +18,7 @@
 
 -(void)update:(CFTimeInterval)dt;
 
--(void)render;
+-(void)renderWater;
 
 -(void)splashAtX:(float)xLocation force:(CGFloat)force;
 -(void)splashAtX:(float)xLocation force:(CGFloat)force width:(float)width;

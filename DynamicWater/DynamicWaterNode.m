@@ -139,7 +139,7 @@
     self.joints = [NSArray arrayWithArray:mutableJoints];
     
     // Initial render
-    [self render];
+    [self renderWater];
     
     
     
@@ -305,7 +305,7 @@
 
 #pragma mark - Render
 
--(void)render{
+-(void)renderWater{
     
     CGPathRelease(self.path);
     self.path = [self newPathFromJoints:self.joints];
