@@ -16,6 +16,7 @@
 @property float spread;
 @property float dropletsForce;
 @property float dropletsDensity;
+@property float dropletSize;
 
 #pragma mark - Init
 /** 

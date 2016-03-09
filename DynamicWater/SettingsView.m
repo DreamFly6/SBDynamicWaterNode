@@ -208,9 +208,24 @@
         }];
         [cellInfos addObject:info];
     }
-
-
     
+    // Droplet Size
+    {
+        
+        SettingsCellSliderInfo *info = [[SettingsCellSliderInfo alloc]init];
+        info.title = @"Droplet Size";
+        info.startValue = 1;
+        info.endValue = 10;
+        info.showValueReadout = YES;
+        [info setGetCurrentValue:^float{
+            return weakSelf.waterNode.dropletSize;
+        }];
+        [info setUpdateCallback:^void(float newValue) {
+            weakSelf.waterNode.dropletSize = newValue;
+        }];
+        [cellInfos addObject:info];
+    }
+
     self.cellInfos = [NSArray arrayWithArray:cellInfos];
 }
 

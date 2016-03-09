@@ -95,8 +95,9 @@
 @property CGPathRef path;
 
 @property (nonatomic, strong) NSMutableArray *droplets;
+@property (nonatomic, strong) NSMutableArray *dropletsCache;
 
-@property (nonatomic, strong) SKEffectNode *dropletsNode;
+@property (nonatomic, strong) SKEffectNode *effectNode;
 
 @end
 
@@ -114,20 +115,17 @@
     self.surfaceHeight = surfaceHeight;
     self.width = width;
     self.droplets = [[NSMutableArray alloc]init];
+    self.dropletsCache = [[NSMutableArray alloc]init];
     
-  
-    
-    // Droplets Node (SKEffectNode)
-    self.dropletsNode = [[SKEffectNode alloc]init];
-    self.dropletsNode.position = CGPointZero;
-    self.dropletsNode.zPosition = 1;
-    self.dropletsNode.shouldRasterize = NO;
-    self.dropletsNode.shouldEnableEffects = YES;
-    self.dropletsNode.shader = [SKShader shaderWithFileNamed:@"Droplets.fsh"];
-    self.dropletsNode.shader.uniforms = @[[SKUniform uniformWithName:@"u_colour" floatVector4:[fillColour vector4Value]]];
-    
-    self.dropletsNode.hidden = NO;
-    [self addChild:self.dropletsNode];
+    // Effect Node
+    self.effectNode = [[SKEffectNode alloc]init];
+    self.effectNode.position = CGPointZero;
+    self.effectNode.zPosition = 1;
+    self.effectNode.shouldRasterize = NO;
+    self.effectNode.shouldEnableEffects = YES;
+    self.effectNode.shader = [SKShader shaderWithFileNamed:@"Droplets.fsh"];
+    self.effectNode.shader.uniforms = @[[SKUniform uniformWithName:@"u_colour" floatVector4:[fillColour vector4Value]]];
+    [self addChild:self.effectNode];
     
     // Shape Node
     self.shapeNode = [[SKShapeNode alloc]init];
@@ -135,15 +133,8 @@
     self.shapeNode.strokeColor = [UIColor greenColor];
     self.shapeNode.glowWidth = 2;
     self.shapeNode.zPosition = 2;
-    [self.dropletsNode addChild:self.shapeNode];
+    [self.effectNode addChild:self.shapeNode];
 
-    // Droplets Node (SKnode)
-//    self.dropletsNode = [SKNode node];
-//    self.dropletsNode.position = CGPointZero;
-//    self.dropletsNode.zPosition = 999;
-//    [self addChild:self.dropletsNode];
-    
-    
     // Create joints
     NSMutableArray *mutableJoints = [[NSMutableArray alloc]initWithCapacity:numJoints];
     for (NSInteger i = 0; i < numJoints; i++) {
@@ -177,6 +168,7 @@
     self.spread = 9;
     self.dropletsForce = 1;
     self.dropletsDensity = 1;
+    self.dropletSize = 3;
 }
 
 -(void)setTension:(float)tension{
@@ -194,7 +186,7 @@
 }
 
 -(void)setColour:(UIColor*)colour{
-    [self.dropletsNode.shader uniformNamed:@"u_colour"].floatVector4Value = [colour vector4Value];
+    [self.effectNode.shader uniformNamed:@"u_colour"].floatVector4Value = [colour vector4Value];
 }
 
 #pragma mark - Splash
@@ -255,16 +247,24 @@
 
 -(void)addDropletAt:(CGPoint)position velocity:(CGPoint)velocity{
     
-    Droplet *droplet = [Droplet droplet];
+    Droplet *droplet;
+    
+    if (self.dropletsCache.count) {
+        droplet = [self.dropletsCache lastObject];
+        [self.dropletsCache removeLastObject];
+    }
+    else{
+        droplet = [Droplet droplet];
+    }
+    
     droplet.velocity = velocity;
     droplet.position = position;
     droplet.zPosition = 1;
     droplet.blendMode = SKBlendModeAlpha;
     droplet.color = [UIColor blueColor];
     droplet.colorBlendFactor = 1;
-    droplet.xScale = droplet.yScale = 3;
-    //droplet.color = [UIColor blueColor];
-    [self.dropletsNode addChild:droplet];
+    droplet.xScale = droplet.yScale = self.dropletSize;
+    [self.effectNode addChild:droplet];
     [self.droplets addObject:droplet];
 }
 
@@ -272,6 +272,7 @@
     
     [droplet removeFromParent];
     [self.droplets removeObject:droplet];
+    [self.dropletsCache addObject:droplet];
 }
 
 
