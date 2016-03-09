@@ -31,9 +31,6 @@ typedef enum : NSUInteger {
 @property BOOL hasReferenceFrameTime;
 
 @property (nonatomic, strong) NSMutableArray *rocks;
-
-
-
 @end
 
 @implementation GameScene
@@ -56,7 +53,7 @@ typedef enum : NSUInteger {
     self.waterNode.zPosition = ZPositionWater;
     self.waterNode.alpha = 0.7;
     [self addChild:self.waterNode];
-    
+        
     // Settings Button
     UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
     [button setTitle:@"Settings" forState:UIControlStateNormal];
