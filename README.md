@@ -40,7 +40,7 @@ Making splashes:
 [self.waterNode splashAtX:100 force:20 width:20];
 ```
 
-Various properties of DynamicWaterNode can be changed to control the feel of the water. The demo project includes a settings screen where you can set these to see their effect.
+Various properties of DynamicWaterNode can be changed to control the feel of the water. The demo project includes a settings screen where you can alter these to see their effect.
 
 
 
