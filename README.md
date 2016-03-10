@@ -25,19 +25,19 @@ Add to your scene:
 Step the simulation in your scene’s update method. See demo project for an example of a fixed time step implementation
 
 ```
-    [self.waterNode update:dt];
+[self.waterNode update:dt];
 ```
 
 Call render: after the simulation has been updated. Only call render once each frame.
 
 ```
-    [self.waterNode render];
+[self.waterNode render];
 ```
 
 Making splashes:
 
 ```
-    [self.waterNode splashAtX:100 force:20 width:20];
+[self.waterNode splashAtX:100 force:20 width:20];
 ```
 
 Various properties of DynamicWaterNode can be changed to control the feel of the water. The demo project includes a settings screen where you can set these to see their effect.
