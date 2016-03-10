@@ -27,7 +27,7 @@
 		67DA19CB1C90809D00BB9382 /* SettingsCellInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19CA1C90809D00BB9382 /* SettingsCellInfo.m */; };
 		67DA19CF1C909FEF00BB9382 /* SettingsView.h in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19B41C8F7E2D00BB9382 /* SettingsView.h */; };
 		67DA19D01C909FEF00BB9382 /* SettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19B51C8F7E2D00BB9382 /* SettingsView.m */; };
-		67DA19D21C90A06A00BB9382 /* metaparticle.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DA19D11C90A06A00BB9382 /* metaparticle.png */; };
+		67DA19D21C90A06A00BB9382 /* Droplet.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DA19D11C90A06A00BB9382 /* Droplet.png */; };
 		67DA19D31C90A2C300BB9382 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67DA19B71C8F7E4500BB9382 /* SettingsView.xib */; };
 		67DA19D71C90C0EC00BB9382 /* SettingsTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19D51C90C0EC00BB9382 /* SettingsTitleCell.m */; };
 		67DA19D81C90C0EC00BB9382 /* SettingsTitleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 67DA19D61C90C0EC00BB9382 /* SettingsTitleCell.xib */; };
@@ -64,7 +64,7 @@
 		67DA19C61C90794800BB9382 /* SettingsSliderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsSliderCell.xib; sourceTree = "<group>"; };
 		67DA19C91C90809D00BB9382 /* SettingsCellInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsCellInfo.h; sourceTree = "<group>"; };
 		67DA19CA1C90809D00BB9382 /* SettingsCellInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsCellInfo.m; sourceTree = "<group>"; };
-		67DA19D11C90A06A00BB9382 /* metaparticle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = metaparticle.png; sourceTree = "<group>"; };
+		67DA19D11C90A06A00BB9382 /* Droplet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Droplet.png; sourceTree = "<group>"; };
 		67DA19D41C90C0EC00BB9382 /* SettingsTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTitleCell.h; sourceTree = "<group>"; };
 		67DA19D51C90C0EC00BB9382 /* SettingsTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTitleCell.m; sourceTree = "<group>"; };
 		67DA19D61C90C0EC00BB9382 /* SettingsTitleCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsTitleCell.xib; sourceTree = "<group>"; };
@@ -118,7 +118,7 @@
 		67DA19CC1C90950500BB9382 /* Dynamic Water Node */ = {
 			isa = PBXGroup;
 			children = (
-				67DA19D11C90A06A00BB9382 /* metaparticle.png */,
+				67DA19D11C90A06A00BB9382 /* Droplet.png */,
 				67DA19581C8DE6F400BB9382 /* DynamicWaterNode.h */,
 				67DA19591C8DE6F400BB9382 /* DynamicWaterNode.m */,
 				67DA19B91C8F8B7900BB9382 /* Droplets.fsh */,
@@ -228,7 +228,7 @@
 			files = (
 				67DA19BE1C8FA22900BB9382 /* spark.png in Resources */,
 				67DA19BD1C8FA22900BB9382 /* MyEmitter.sks in Resources */,
-				67DA19D21C90A06A00BB9382 /* metaparticle.png in Resources */,
+				67DA19D21C90A06A00BB9382 /* Droplet.png in Resources */,
 				67DA19461C8DE6C500BB9382 /* GameScene.sks in Resources */,
 				67DA19D81C90C0EC00BB9382 /* SettingsTitleCell.xib in Resources */,
 				67DA19511C8DE6C500BB9382 /* LaunchScreen.storyboard in Resources */,

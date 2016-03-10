@@ -36,7 +36,7 @@
 @implementation Droplet
 
 +(instancetype)droplet{
-    Droplet *droplet = [[Droplet alloc]initWithImageNamed:@"metaparticle"];
+    Droplet *droplet = [[Droplet alloc]initWithImageNamed:@"Droplet"];
     droplet.velocity = CGPointZero;
     return droplet;
 }

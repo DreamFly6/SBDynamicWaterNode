@@ -49,10 +49,12 @@ typedef enum : NSUInteger {
     [self addChild:self.skySprite];
 
     // Water
-    self.waterNode = [[DynamicWaterNode alloc]initWithWidth:self.size.width numJoints:100 surfaceHeight:kSurfaceHeight fillColour:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.5]];
+    self.waterNode = [[DynamicWaterNode alloc]initWithWidth:self.size.width
+                                                  numJoints:100
+                                              surfaceHeight:kSurfaceHeight
+                                                 fillColour:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.5]];
     self.waterNode.position = CGPointMake(self.size.width/2, 0);
     self.waterNode.zPosition = ZPositionWater;
-    //self.waterNode.alpha = 0.7;
     [self addChild:self.waterNode];
         
     // Settings Button
