@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		67AC79761CBEE56700551E1F /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 67DA19521C8DE6C500BB9382 /* Info.plist */; };
 		67DA193E1C8DE6C500BB9382 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA193D1C8DE6C500BB9382 /* main.m */; };
 		67DA19411C8DE6C500BB9382 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19401C8DE6C500BB9382 /* AppDelegate.m */; };
 		67DA19441C8DE6C500BB9382 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19431C8DE6C500BB9382 /* GameScene.m */; };
@@ -84,7 +85,8 @@
 		67DA19301C8DE6C400BB9382 = {
 			isa = PBXGroup;
 			children = (
-				67DA193B1C8DE6C500BB9382 /* DynamicWater */,
+				67DA19CC1C90950500BB9382 /* Dynamic Water Node */,
+				67DA193B1C8DE6C500BB9382 /* Demo */,
 				67DA193A1C8DE6C400BB9382 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -97,36 +99,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		67DA193B1C8DE6C500BB9382 /* DynamicWater */ = {
-			isa = PBXGroup;
-			children = (
-				67DA19CC1C90950500BB9382 /* Dynamic Water Node */,
-				67DA19CD1C90951500BB9382 /* Demo */,
-				67DA193C1C8DE6C500BB9382 /* Supporting Files */,
-			);
-			path = DynamicWater;
-			sourceTree = "<group>";
-		};
-		67DA193C1C8DE6C500BB9382 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				67DA193D1C8DE6C500BB9382 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		67DA19CC1C90950500BB9382 /* Dynamic Water Node */ = {
-			isa = PBXGroup;
-			children = (
-				67DA19D11C90A06A00BB9382 /* Droplet.png */,
-				67DA19581C8DE6F400BB9382 /* DynamicWaterNode.h */,
-				67DA19591C8DE6F400BB9382 /* DynamicWaterNode.m */,
-				67DA19B91C8F8B7900BB9382 /* Droplets.fsh */,
-			);
-			name = "Dynamic Water Node";
-			sourceTree = "<group>";
-		};
-		67DA19CD1C90951500BB9382 /* Demo */ = {
+		67DA193B1C8DE6C500BB9382 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
 				67DA195C1C8E542300BB9382 /* rock.png */,
@@ -147,8 +120,38 @@
 				67DA194D1C8DE6C500BB9382 /* Assets.xcassets */,
 				67DA194F1C8DE6C500BB9382 /* LaunchScreen.storyboard */,
 				67DA19521C8DE6C500BB9382 /* Info.plist */,
+				67DA19CD1C90951500BB9382 /* Water Scene */,
+				67DA193C1C8DE6C500BB9382 /* Supporting Files */,
 			);
 			name = Demo;
+			path = DemoSource;
+			sourceTree = "<group>";
+		};
+		67DA193C1C8DE6C500BB9382 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				67DA193D1C8DE6C500BB9382 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		67DA19CC1C90950500BB9382 /* Dynamic Water Node */ = {
+			isa = PBXGroup;
+			children = (
+				67DA19D11C90A06A00BB9382 /* Droplet.png */,
+				67DA19581C8DE6F400BB9382 /* DynamicWaterNode.h */,
+				67DA19591C8DE6F400BB9382 /* DynamicWaterNode.m */,
+				67DA19B91C8F8B7900BB9382 /* Droplets.fsh */,
+			);
+			name = "Dynamic Water Node";
+			path = ../SBDynamicWaterNode;
+			sourceTree = "<group>";
+		};
+		67DA19CD1C90951500BB9382 /* Water Scene */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Water Scene";
 			sourceTree = "<group>";
 		};
 		67DA19D91C90C0F200BB9382 /* Settings */ = {
@@ -232,6 +235,7 @@
 				67DA19461C8DE6C500BB9382 /* GameScene.sks in Resources */,
 				67DA19D81C90C0EC00BB9382 /* SettingsTitleCell.xib in Resources */,
 				67DA19511C8DE6C500BB9382 /* LaunchScreen.storyboard in Resources */,
+				67AC79761CBEE56700551E1F /* Info.plist in Resources */,
 				67DA195F1C8E542300BB9382 /* rock.png in Resources */,
 				67DA19C81C90794800BB9382 /* SettingsSliderCell.xib in Resources */,
 				67DA194E1C8DE6C500BB9382 /* Assets.xcassets in Resources */,
@@ -371,7 +375,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = DynamicWater/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DemoSource/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SteveBarnegren.DynamicWater;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -382,7 +386,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = DynamicWater/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/DemoSource/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = SteveBarnegren.DynamicWater;
 				PRODUCT_NAME = "$(TARGET_NAME)";
