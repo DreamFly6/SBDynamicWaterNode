@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
-Physical water simulation for SpriteKit
+Physical water simulation for SpriteKit with demo application
                        DESC
 
   s.homepage         = "https://github.com/SteveBarnegren/DynamicWaterNode"
@@ -30,9 +30,9 @@ Physical water simulation for SpriteKit
   s.platform     = :ios, '8.0'
   s.requires_arc = true
 
-  s.source_files = 'SBDynamicWaterNode/**/*.{h,m,fsh}'
+  s.source_files = 'SBDynamicWaterNode/**/*.{h,m}'
   s.resource_bundles = {
-    'SBDynamicWaterNode' => ['SBDynamicWaterNode/*.png']
+    'SBDynamicWaterNode' => ['SBDynamicWaterNode/*.{png,fsh}']
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
