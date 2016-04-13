@@ -31,9 +31,10 @@ Physical water simulation for SpriteKit with demo application
   s.requires_arc = true
 
   s.source_files = 'SBDynamicWaterNode/**/*.{h,m}'
-  s.resource_bundles = {
-    'SBDynamicWaterNode' => ['SBDynamicWaterNode/*.{png,fsh}']
-  }
+  s.resources = 'SBDynamicWaterNode/**/*.{png,fsh}'
+  #s.resource_bundles = {
+  #  'SBDynamicWaterNode' => ['SBDynamicWaterNode/*.{png,fsh}']
+  #}
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   s.frameworks = 'SpriteKit'
