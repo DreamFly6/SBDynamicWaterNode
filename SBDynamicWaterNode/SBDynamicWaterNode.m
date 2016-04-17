@@ -8,11 +8,11 @@
 
 #import "SBDynamicWaterNode.h"
 
-@interface UIColor (DynamicWaterNodeExtensions)
+@interface UIColor (SBDynamicWaterNodeExtensions)
 -(GLKVector4)vector4Value;
 @end
 
-@implementation UIColor (DynamicWaterNodeExtensions)
+@implementation UIColor (SBDynamicWaterNodeExtensions)
 
 -(GLKVector4)vector4Value{
     
@@ -27,16 +27,14 @@
 #pragma mark - ***** Droplet *****
 //**********************************************
 
-@interface Droplet : SKSpriteNode
+@interface SBDroplet : SKSpriteNode
 @property CGPoint velocity;
-
-
 @end
 
-@implementation Droplet
+@implementation SBDroplet
 
 +(instancetype)droplet{
-    Droplet *droplet = [[Droplet alloc]initWithImageNamed:@"Droplet"];
+    SBDroplet *droplet = [[SBDroplet alloc]initWithImageNamed:@"Droplet"];
     droplet.velocity = CGPointZero;
     return droplet;
 }
@@ -47,7 +45,7 @@
 #pragma mark - ***** WaterJoint *****
 //**********************************************
 
-@interface WaterJoint : NSObject
+@interface SBWaterJoint : NSObject
 
 @property (nonatomic) CGPoint position;
 @property (nonatomic) CGFloat velocity;
@@ -55,7 +53,7 @@
 @property (nonatomic) CGFloat tension;
 @end
 
-@implementation WaterJoint
+@implementation SBWaterJoint
 
 -(instancetype)init{
     
@@ -88,7 +86,7 @@
 //**********************************************
 
 @interface SBDynamicWaterNode ()
-@property (nonatomic, strong) NSArray<WaterJoint*> *joints;
+@property (nonatomic, strong) NSArray<SBWaterJoint*> *joints;
 @property (nonatomic, strong) SKShapeNode *shapeNode;
 @property float width;
 
@@ -138,7 +136,7 @@
     // Create joints
     NSMutableArray *mutableJoints = [[NSMutableArray alloc]initWithCapacity:numJoints];
     for (NSInteger i = 0; i < numJoints; i++) {
-        WaterJoint *joint = [[WaterJoint alloc]init];
+        SBWaterJoint *joint = [[SBWaterJoint alloc]init];
         CGPoint position;
         position.x = -(width/2) + ((width/(numJoints-1)) * i);
         position.y = 0;
@@ -173,14 +171,14 @@
 
 -(void)setTension:(float)tension{
     _tension = tension;
-    for (WaterJoint *joint in self.joints) {
+    for (SBWaterJoint *joint in self.joints) {
         joint.tension = tension;
     }
 }
 
 -(void)setDamping:(float)damping{
     _damping = damping;
-    for (WaterJoint *joint in self.joints) {
+    for (SBWaterJoint *joint in self.joints) {
         joint.damping = damping;
     }
 }
@@ -200,9 +198,9 @@
     xLocation -= self.width/2;
     
     CGFloat shortestDistance = CGFLOAT_MAX;
-    WaterJoint *closestJoint;
+    SBWaterJoint *closestJoint;
     
-    for (WaterJoint *joint in self.joints) {
+    for (SBWaterJoint *joint in self.joints) {
     
         CGFloat distance = fabs(joint.position.x - xLocation);
         if (distance < shortestDistance) {
@@ -213,7 +211,7 @@
     
     closestJoint.velocity = -force;
     
-    for (WaterJoint *joint in self.joints) {
+    for (SBWaterJoint *joint in self.joints) {
         CGFloat distance = fabs(joint.position.x - closestJoint.position.x);
         if (distance < width) {
             joint.velocity = distance / width * -force;
@@ -247,14 +245,14 @@
 
 -(void)addDropletAt:(CGPoint)position velocity:(CGPoint)velocity{
     
-    Droplet *droplet;
+    SBDroplet *droplet;
     
     if (self.dropletsCache.count) {
         droplet = [self.dropletsCache lastObject];
         [self.dropletsCache removeLastObject];
     }
     else{
-        droplet = [Droplet droplet];
+        droplet = [SBDroplet droplet];
     }
     
     droplet.velocity = velocity;
@@ -268,7 +266,7 @@
     [self.droplets addObject:droplet];
 }
 
--(void)removeDroplet:(Droplet*)droplet{
+-(void)removeDroplet:(SBDroplet*)droplet{
     
     [droplet removeFromParent];
     [self.droplets removeObject:droplet];
@@ -286,7 +284,7 @@
 -(void)updateJoints:(CFTimeInterval)dt{
     
     
-    for (WaterJoint *joint in self.joints) {
+    for (SBWaterJoint *joint in self.joints) {
         [joint update:dt];
     }
     
@@ -297,15 +295,15 @@
         
         for (NSInteger i = 0; i < self.joints.count; i++) {
             
-            WaterJoint *currentJoint = self.joints[i];
+            SBWaterJoint *currentJoint = self.joints[i];
             
             if (i > 0) {
-                WaterJoint *previousJoint = self.joints[i-1];
+                SBWaterJoint *previousJoint = self.joints[i-1];
                 leftDeltas[i] = self.spread * (currentJoint.position.y - previousJoint.position.y);
                 previousJoint.velocity += leftDeltas[i] * dt;
             }
             if (i < self.joints.count-1) {
-                WaterJoint *nextJoint = self.joints[i+1];
+                SBWaterJoint *nextJoint = self.joints[i+1];
                 rightDeltas[i] = self.spread * (currentJoint.position.y - nextJoint.position.y);
                 nextJoint.velocity += rightDeltas[i] * dt;
             }
@@ -314,11 +312,11 @@
         for (NSInteger i = 0; i < self.joints.count; i++) {
             
             if (i > 0) {
-                WaterJoint *previousJoint = self.joints[i-1];
+                SBWaterJoint *previousJoint = self.joints[i-1];
                 [previousJoint setYPosition:previousJoint.position.y + leftDeltas[i] * dt];
             }
             if (i < self.joints.count - 1) {
-                WaterJoint *nextJoint = self.joints[i+1];
+                SBWaterJoint *nextJoint = self.joints[i+1];
                 [nextJoint setYPosition:nextJoint.position.y + rightDeltas[i] * dt];
             }
             
@@ -333,7 +331,7 @@
     
     NSMutableArray *dropletsToRemove = [[NSMutableArray alloc]init];
     
-    for (Droplet *droplet in self.droplets) {
+    for (SBDroplet *droplet in self.droplets) {
         
         // Apply Gravity
         droplet.velocity = CGPointMake(droplet.velocity.x,
@@ -348,7 +346,7 @@
         }
     }
     
-    for (Droplet *droplet in dropletsToRemove) {
+    for (SBDroplet *droplet in dropletsToRemove) {
         [self removeDroplet:droplet];
     }
     
@@ -369,7 +367,7 @@
     CGMutablePathRef path = CGPathCreateMutable();
     
     NSInteger index = 0;
-    for (WaterJoint *joint in self.joints) {
+    for (SBWaterJoint *joint in self.joints) {
         
         if (index == 0) {
             CGPathMoveToPoint(path,
