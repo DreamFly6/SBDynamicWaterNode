@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "SBDynamicWaterNode"
-  s.version          = "0.1.0"
+  s.version          = "1.0.0"
   s.summary          = "Physical water simulation for SpriteKit"
 
 # This description is used to generate tags and improve search results.
