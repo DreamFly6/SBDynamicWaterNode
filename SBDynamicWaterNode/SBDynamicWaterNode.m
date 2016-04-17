@@ -1,12 +1,12 @@
 //
-//  DynamicWaterNode.m
-//  DynamicWater
+//  SBDynamicWaterNode.m
+//  SBDynamicWaterNode
 //
 //  Created by Steve Barnegren on 07/03/2016.
 //  Copyright © 2016 Steve Barnegren. All rights reserved.
 //
 
-#import "DynamicWaterNode.h"
+#import "SBDynamicWaterNode.h"
 
 @interface UIColor (DynamicWaterNodeExtensions)
 -(GLKVector4)vector4Value;
@@ -87,7 +87,7 @@
 #pragma mark - ***** DynamicWaterNode *****
 //**********************************************
 
-@interface DynamicWaterNode ()
+@interface SBDynamicWaterNode ()
 @property (nonatomic, strong) NSArray<WaterJoint*> *joints;
 @property (nonatomic, strong) SKShapeNode *shapeNode;
 @property float width;
@@ -102,7 +102,7 @@
 @end
 
 
-@implementation DynamicWaterNode
+@implementation SBDynamicWaterNode
 
 #pragma mark - LifeCycle
 

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DynamicWaterNode.h"
+#import "SBDynamicWaterNode.h"
 
 @class GameScene;
 
@@ -17,7 +17,7 @@
 @property (nonatomic, weak) id<SettingsViewDelegate> delegate;
 
 @property (nonatomic, weak) GameScene *gameScene;
-@property (nonatomic, weak) DynamicWaterNode *waterNode;
+@property (nonatomic, weak) SBDynamicWaterNode *waterNode;
 +(id)instanceFromNib;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "GameScene.h"
-#import "DynamicWaterNode.h"
+#import "SBDynamicWaterNode.h"
 #import "Rock.h"
 #import "SettingsView.h"
 
@@ -25,7 +25,7 @@ typedef enum : NSUInteger {
 @property (nonatomic, strong) SettingsView *settingsView;
 
 @property (nonatomic, strong) SKSpriteNode *skySprite;
-@property (nonatomic, strong) DynamicWaterNode *waterNode;
+@property (nonatomic, strong) SBDynamicWaterNode *waterNode;
 
 @property CFTimeInterval lastFrameTime;
 @property BOOL hasReferenceFrameTime;
@@ -49,10 +49,10 @@ typedef enum : NSUInteger {
     [self addChild:self.skySprite];
 
     // Water
-    self.waterNode = [[DynamicWaterNode alloc]initWithWidth:self.size.width
-                                                  numJoints:100
-                                              surfaceHeight:kSurfaceHeight
-                                                 fillColour:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.5]];
+    self.waterNode = [[SBDynamicWaterNode alloc]initWithWidth:self.size.width
+                                                    numJoints:100
+                                                surfaceHeight:kSurfaceHeight
+                                                   fillColour:[UIColor colorWithRed:0 green:0 blue:1 alpha:0.5]];
     self.waterNode.position = CGPointMake(self.size.width/2, 0);
     self.waterNode.zPosition = ZPositionWater;
     [self addChild:self.waterNode];

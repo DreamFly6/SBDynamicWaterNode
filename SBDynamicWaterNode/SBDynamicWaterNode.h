@@ -1,6 +1,6 @@
 //
-//  DynamicWaterNode.h
-//  DynamicWater
+//  SBDynamicWaterNode.h
+//  SBDynamicWaterNode
 //
 //  Created by Steve Barnegren on 07/03/2016.
 //  Copyright © 2016 Steve Barnegren. All rights reserved.
@@ -8,7 +8,7 @@
 
 #import <SpriteKit/SpriteKit.h>
 
-@interface DynamicWaterNode : SKNode
+@interface SBDynamicWaterNode : SKNode
 
 @property float surfaceHeight;
 @property (nonatomic) float tension;

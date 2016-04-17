@@ -16,7 +16,7 @@
 		67DA194C1C8DE6C500BB9382 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67DA194A1C8DE6C500BB9382 /* Main.storyboard */; };
 		67DA194E1C8DE6C500BB9382 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 67DA194D1C8DE6C500BB9382 /* Assets.xcassets */; };
 		67DA19511C8DE6C500BB9382 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 67DA194F1C8DE6C500BB9382 /* LaunchScreen.storyboard */; };
-		67DA195A1C8DE6F400BB9382 /* DynamicWaterNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19591C8DE6F400BB9382 /* DynamicWaterNode.m */; };
+		67DA195A1C8DE6F400BB9382 /* SBDynamicWaterNode.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19591C8DE6F400BB9382 /* SBDynamicWaterNode.m */; };
 		67DA195F1C8E542300BB9382 /* rock.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DA195C1C8E542300BB9382 /* rock.png */; };
 		67DA19601C8E542300BB9382 /* sky.png in Resources */ = {isa = PBXBuildFile; fileRef = 67DA195D1C8E542300BB9382 /* sky.png */; };
 		67DA19B31C8F39A400BB9382 /* Rock.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DA19B21C8F39A400BB9382 /* Rock.m */; };
@@ -46,8 +46,8 @@
 		67DA194D1C8DE6C500BB9382 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		67DA19501C8DE6C500BB9382 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		67DA19521C8DE6C500BB9382 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		67DA19581C8DE6F400BB9382 /* DynamicWaterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicWaterNode.h; sourceTree = "<group>"; };
-		67DA19591C8DE6F400BB9382 /* DynamicWaterNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicWaterNode.m; sourceTree = "<group>"; };
+		67DA19581C8DE6F400BB9382 /* SBDynamicWaterNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBDynamicWaterNode.h; sourceTree = "<group>"; };
+		67DA19591C8DE6F400BB9382 /* SBDynamicWaterNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBDynamicWaterNode.m; sourceTree = "<group>"; };
 		67DA195C1C8E542300BB9382 /* rock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rock.png; sourceTree = "<group>"; };
 		67DA195D1C8E542300BB9382 /* sky.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sky.png; sourceTree = "<group>"; };
 		67DA19B11C8F39A400BB9382 /* Rock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rock.h; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 		67DA19301C8DE6C400BB9382 = {
 			isa = PBXGroup;
 			children = (
-				67DA19CC1C90950500BB9382 /* Dynamic Water Node */,
+				67DA19CC1C90950500BB9382 /* SBDynamicWaterNode */,
 				67DA193B1C8DE6C500BB9382 /* Demo */,
 				67DA193A1C8DE6C400BB9382 /* Products */,
 			);
@@ -128,15 +128,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		67DA19CC1C90950500BB9382 /* Dynamic Water Node */ = {
+		67DA19CC1C90950500BB9382 /* SBDynamicWaterNode */ = {
 			isa = PBXGroup;
 			children = (
 				67DA19D11C90A06A00BB9382 /* Droplet.png */,
-				67DA19581C8DE6F400BB9382 /* DynamicWaterNode.h */,
-				67DA19591C8DE6F400BB9382 /* DynamicWaterNode.m */,
+				67DA19581C8DE6F400BB9382 /* SBDynamicWaterNode.h */,
+				67DA19591C8DE6F400BB9382 /* SBDynamicWaterNode.m */,
 				67DA19B91C8F8B7900BB9382 /* Droplets.fsh */,
 			);
-			name = "Dynamic Water Node";
+			name = SBDynamicWaterNode;
 			path = ../SBDynamicWaterNode;
 			sourceTree = "<group>";
 		};
@@ -246,7 +246,7 @@
 				67DA19B31C8F39A400BB9382 /* Rock.m in Sources */,
 				67DA19C71C90794800BB9382 /* SettingsSliderCell.m in Sources */,
 				67DA19441C8DE6C500BB9382 /* GameScene.m in Sources */,
-				67DA195A1C8DE6F400BB9382 /* DynamicWaterNode.m in Sources */,
+				67DA195A1C8DE6F400BB9382 /* SBDynamicWaterNode.m in Sources */,
 				67DA193E1C8DE6C500BB9382 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
