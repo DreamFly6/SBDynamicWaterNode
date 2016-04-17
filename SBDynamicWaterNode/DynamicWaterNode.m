@@ -223,7 +223,7 @@
     
     // Add droplets
     NSInteger numDroplets = 20 * force/100 * self.dropletsDensity;
-    NSLog(@"Num Droplets: %li", (long)numDroplets);
+    //NSLog(@"Num Droplets: %li", (long)numDroplets);
     for (NSInteger i = 0; i < numDroplets; i++) {
         const float maxVelY = 500 * force/100*self.dropletsForce;
         const float minVelY = 200 * force/100*self.dropletsForce;
