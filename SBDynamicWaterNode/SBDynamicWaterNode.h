@@ -10,12 +10,19 @@
 
 @interface SBDynamicWaterNode : SKNode
 
+/** Height of the water's surface */
 @property float surfaceHeight;
+/** Tension the water, shoud probably be less than damping */
 @property (nonatomic) float tension;
+/** Tension the water, shoud probably be greater than damping */
 @property (nonatomic) float damping;
+/** Controls how fast/far waves propogate across water surface */
 @property float spread;
+/** The amount of force applied to splash droplets */
 @property float dropletsForce;
+/** Higher values will result splahes producing more water droplets */
 @property float dropletsDensity;
+/** Size of water droplets */
 @property float dropletSize;
 
 #pragma mark - Init
@@ -33,6 +40,7 @@
 -(void)setDefaultValues;
 
 #pragma mark - Colour
+/** Set the water colour */
 -(void)setColour:(UIColor*)colour;
 
 #pragma mark - Update
@@ -44,7 +52,18 @@
 
 
 #pragma mark - Splash
+/**
+ Make a splash
+ @param xLocation: Location of the splash
+ @param force: Force of the splash
+ */
 -(void)splashAtX:(float)xLocation force:(CGFloat)force;
+/**
+ Make a splash
+ @param xLocation: Location of the splash
+ @param force: Force of the splash
+ @param width: The width of the splash. Set to higher values to simulate objects with a larger surface area
+ */
 -(void)splashAtX:(float)xLocation force:(CGFloat)force width:(float)width;
 
 #pragma mark - Render
