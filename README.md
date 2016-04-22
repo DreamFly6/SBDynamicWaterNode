@@ -1,8 +1,11 @@
 # DynamicWaterNode
 2D physical water simulation for SpriteKit
 
-![GIF](https://github.com/SteveBarnegren/DynamicWaterNode/raw/master/DynamicWater.gif)
+[![Pod Version](http://img.shields.io/cocoapods/v/SBDynamicWaterNode.svg?style=flat)](http://cocoadocs.org/docsets/SBDynamicWaterNode/)
+[![Pod Platform](http://img.shields.io/cocoapods/p/SBDynamicWaterNode.svg?style=flat)](http://cocoadocs.org/docsets/SBDynamicWaterNode/)
+[![Pod License](http://img.shields.io/cocoapods/l/SBDynamicWaterNode.svg?style=flat)](http://cocoadocs.org/docsets/SBDynamicWaterNode/)
 
+![GIF](https://github.com/SteveBarnegren/DynamicWaterNode/raw/master/DynamicWater.gif)
 
 # How to use
 
